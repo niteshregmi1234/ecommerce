@@ -122,15 +122,29 @@
                         </g:link>
                         <div class="text">
                             <h3><g:link action="singleProduct" controller="endUser" id="${list.id}">${list.productDetails.productName}</g:link></h3>
-                            <p class="price">Rs.${list.productDetails.price}</p>
+                            <g:if test="${list.productDetails.isSale==true}">
+                                <p class="price"><del>Rs.${list.productDetails.price}</del> Rs.${list.productDetails.price-(list.productDetails.discountPercentage*list.productDetails.price/100)}</p>
+                            </g:if>
+    <g:if test="${list.productDetails.isSale==false}">
+
+        <p class="price">Rs.${list.productDetails.price}</p>
+        </g:if>
                         </div>
                         <!-- /.text -->
-
-                        <div class="ribbon new">
-                            <div class="theribbon">NEW</div>
+                        <g:if test="${list.productDetails.isSale==true}">
+                        <div class="ribbon sale">
+                            <div class="theribbon">SALE</div>
                             <div class="ribbon-background"></div>
                         </div>
-                        <!-- /.ribbon -->
+                        </g:if>
+                        <g:if test="${list.isLatest==true}">
+                            <div class="ribbon new">
+                                <div class="theribbon">NEW</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+                        </g:if>
+
+                    <!-- /.ribbon -->
                     </div>
                     <!-- /.product -->
                 </div>
@@ -200,41 +214,57 @@
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front food1">
-                                        <a href="detail.gsp">
-                                            <img src="${resource(dir: "images/allProducts/frontImage",file: "${list.frontImageName}")}" alt="" class="img-responsive">
+                                        <g:link action="singleProduct" controller="endUser" id="${list.id}">
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${list.specialImageName}")}" alt="" class="img-responsive">
 
-                                        </a>
+                                        </g:link>
                                     </div>
                                     <div class="back food1">
-                                        <a href="detail.gsp">
-                                            <img src="${resource(dir: "images/allProducts/frontImage",file: "${list.frontImageName}")}" alt="" class="img-responsive">
+                                        <g:link action="singleProduct" controller="endUser" id="${list.id}">
 
-                                        </a>
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${list.specialImageName}")}" alt="" class="img-responsive">
+
+                                        </g:link>
                                     </div>
                                 </div>
                             </div>
-                            <a href="detail.gsp" class="invisible food1">
-                                <img src="${resource(dir: "images/allProducts/frontImage",file: "${list.frontImageName}")}" alt="" class="img-responsive">
+                            <g:link action="singleProduct" controller="endUser" id="${list.id}" class="invisible food1">
+                                <img src="${resource(dir: "images/allProducts/specialImage",file: "${list.specialImageName}")}" alt="" class="img-responsive">
 
 
-                            </a>
+                            </g:link>
                             <div class="text">
-                                <h3><a href="detail.gsp">White Blouse Versace</a></h3>
-                                <p class="price">$143.00</p>
-                            </div>
-                            <!-- /.text -->
+                                <h3><g:link action="singleProduct" controller="endUser" id="${list.id}">${list.productDetails.productName}</g:link></h3>
+                                <g:if test="${list.productDetails.isSale==true}">
+                                    <p class="price"><del>Rs.${list.productDetails.price}</del> Rs.${list.productDetails.price-(list.productDetails.discountPercentage*list.productDetails.price/100)}</p>
+                                </g:if>
+                                <g:if test="${list.productDetails.isSale==false}">
 
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
+                                    <p class="price">Rs.${list.productDetails.price}</p>
+                                </g:if>
                             </div>
-                            <!-- /.ribbon -->
+                        <!-- /.text -->
+                            <g:if test="${list.productDetails.isSale==true}">
+                                <div class="ribbon sale">
+                                    <div class="theribbon">SALE</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                            </g:if>
+                            <g:if test="${list.isLatest==true}">
+                                <div class="ribbon new">
+                                    <div class="theribbon">NEW</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                            </g:if>
+
+                        <!-- /.ribbon -->
                         </div>
                         <!-- /.product -->
                     </div>
 
                 </g:each>
             </div>
+
             <!-- /.product-slider -->
         </div>
         <!-- /.container -->
