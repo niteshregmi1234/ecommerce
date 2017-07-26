@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div id="content" style="padding-top: 85px;">
+<div id="content">
 
     <div class="container">
         <div class="col-md-12">
@@ -97,7 +97,7 @@
 <g:each in="${latestProductList}" var="list">
 
                 <div class="item">
-                    <div class="product">
+                    <div class="product product-height">
                         <div class="flip-container">
                             <div class="flipper">
                                 <div class="front food1">
@@ -196,7 +196,7 @@
                 <g:each in="${featuredProductList}" var="list">
 
                     <div class="item">
-                        <div class="product">
+                        <div class="product product-height">
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front food1">
@@ -247,16 +247,17 @@
             <div class="box slideshow">
 
                 <div id="thumbnail text-center nomargin">
-        <img src="${resource(dir: "images/seasonsImage",file: "${seasonManagementInstance.seasons.imageName}")}" alt="" class="img-responsive">
+        <img src="${resource(dir: "images/seasonsImage",file: "${seasonManagementInstance.seasons.imageName}")}" alt="" class="img-responsive image-nomargin">
 
-                    <div class="middle">
+                    <div class="middle1 col-sm-offset-4 col-sm-5">
                         <div class="text1">
                            <h3> <p class="text-center lead1">${seasonManagementInstance.seasons.greetings}</p></h3>
 
 
                            <p class="text-center lead lead2">${seasonManagementInstance.seasons.descriptionOfSeason}</p>
-                           <a href="#" class="btn btn-primary subButton" style="margin-bottom: 10px;">${seasonManagementInstance.seasons.askingForShopping}</a>
-
+                            <div class="wthreeshop-a">
+                                <a href="#">${seasonManagementInstance.seasons.askingForShopping}</a>
+                            </div>
                        </div>
                     </div>
 
@@ -434,40 +435,6 @@
     }
 </script>
     <!-- *** BLOG HOMEPAGE END *** -->
-<style>
-
-.middle {
-    transition: .5s ease;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.75);
-}
-.agileinfonewsl {
-    /*background-image: url("../../imagess/yamsaa/newsletter.jpg");*/
-    background-position: center center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-attachment: fixed;
-    text-align: center;
-    height: 600px;
-    width: 1110px;
-}
-
-
-.text1 {
-    font-family: 'Sintony', sans-serif;
-    color: #ffffff;
-    font-size: 16px;
-    padding: 16px 32px;
-}
-</style>
-
-
 
 </body>
 </html>

@@ -22,6 +22,18 @@ h1 {
   background: #555555;
   padding: 10px 0;
 }
+.pannel-tab .panel-heading{
+  background-color: #5c9e42;
+}
+.btn-success{
+  background-color: #6eb752;
+  border-color: #62a946;
+}
+.btn-sucess:hover, .btn-sucess:focus, .btn-sucess:active, .btn-sucess.active, .open .dropdown-toggle.btn-sucess {
+  color: #ffffff;
+  background-color: #6eb752;
+  border-color: #62a946;
+}
 #top .offer {
   color: #fff;
 }

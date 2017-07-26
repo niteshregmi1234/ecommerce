@@ -39,7 +39,7 @@
                 <li>About</li>
             </ul>
         </div>
-        <div class="col-md-6" data-animate="fadeInUp">
+        <div class="col-md-6 " data-animate="fadeInUp">
 
             <div class="row">
                 <div class="col-sm-6">
@@ -58,6 +58,8 @@
                     </div>
 
                 </div>
+            </div><br>
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="imgwrapper">
                         <img class="img-responsive" src="${resource(dir: "images/otherStuffs",file: "${aboutUsInstance.aboutUs1Image}")}" width="321" height="215">
@@ -79,7 +81,7 @@
             </div>
             <!-- /#blog-homepage -->
         </div>
-        <div class="col-md-6" data-animate="fadeInUp">
+        <div class="col-md-6 small-screen screen1" data-animate="fadeInUp">
                 <div class="box same-height clickable">
 
                     <h1>ABOUT US</h1>
@@ -97,17 +99,17 @@
         <div class="col-md-12" data-animate="fadeInUp">
 
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-5 quote1">
                     <div class="imgwrapper quote">
-                        <img class="img-responsive" src="${resource(dir: "images/otherStuffs",file: "${aboutUsInstance.quoteLeftImage}")}">
+                        <img class="img-responsive about-img" src="${resource(dir: "images/otherStuffs",file: "${aboutUsInstance.quoteLeftImage}")}">
 
 
                     </div>
 
                 </div>
 
-                <div class="col-sm-2">
-                    <div class="box same-height clickable">
+                <div class="col-sm-2 small-screen">
+                    <div class="box height-same clickable small-screen">
 
                         <h3>"${aboutUsInstance.quote}"</h3>
                         <h4>― ${CompanyInformation.list()[0].proprietorName}</h4>
@@ -117,7 +119,7 @@
                 </div>
                 <div class="col-sm-5">
                     <div class="imgwrapper quote">
-                        <img class="img-responsive" src="${resource(dir: "images/otherStuffs",file: "${aboutUsInstance.quoteRightImage}")}">
+                        <img class="img-responsive about-img" src="${resource(dir: "images/otherStuffs",file: "${aboutUsInstance.quoteRightImage}")}">
 
 
                     </div>
@@ -135,10 +137,10 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="box">
+                    <div class="box ">
                     <h2>SHOPPING VIDEO</h2>
-                    <p>${aboutUsInstance.videoDescription} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo varius vehicula. Mauris porta metus vitae nulla dignissim egestas. Aliquam sed molestie eros, in pharetra purus. Praesent consequat porta viverra. Praesent gravida dapibus condimentum. Vestibulum vel lacus aliquet, laoreet mi eu, tempor est. Quisque volutpat finibus tristique. Duis at nibh eget nulla pretium pretium. Quisque arcu sem, dignissim eu egestas quis, vulputate non mauris.</p>
-                    <p>Check out our latest commercial commercial commercial commercialcommercial commercial commercial commercial commercial commercial commercial commercial commercial commercial commercial, teaser and behind the scenes film.</p>
+                    <p class="box-text">${aboutUsInstance.videoDescription} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo varius vehicula. Mauris porta metus vitae nulla dignissim egestas. Aliquam sed molestie eros, in pharetra purus. Praesent consequat porta viverra. Praesent gravida dapibus condimentum. Vestibulum vel lacus aliquet, laoreet mi eu, tempor est. Quisque volutpat finibus tristique. Duis at nibh eget nulla pretium pretium. Quisque arcu sem, dignissim eu egestas quis, vulputate non mauris.</p>
+                    <p class="box-text">Check out our latest commercial commercial commercial commercialcommercial commercial commercial commercial commercial commercial commercial commercial commercial commercial commercial, teaser and behind the scenes film.</p>
                         <p class="read-more"><a href="#small-dialog4" class="popup-with-zoom-anim btn btn-primary">WATCH NOW</a></p>
 
                     </div>
@@ -179,13 +181,13 @@
                             <div class="flipper">
                                 <div class="front product">
                                     <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct1.id}">
-                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive">
+                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                     </g:link>
                                 </div>
                                 <div class="back product">
                                     <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct1.id}">
-                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive">
+                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                     </g:link>
                                 </div>
@@ -211,20 +213,20 @@
             </g:if>
             <g:if test="${aboutUsInstance.specialProduct1.productDetails.isSale==true}">
 
-                <div class="col-md-6 col-sm-4 6">
+                <div class="col-md-6 col-sm-6">
                     <div class="product">
                         <div class="flip-container">
                             <div class="flipper">
                                 <div class="front product">
                                     <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct1.id}">
-                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive">
+                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                     </g:link>
                                 </div>
                                 <div class="back product">
                                     <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct1.id}">
 
-                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive">
+                                        <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct1.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                     </g:link>
                                 </div>
@@ -273,13 +275,13 @@
                                 <div class="flipper">
                                     <div class="front product">
                                         <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct2.id}">
-                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive">
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                         </g:link>
                                     </div>
                                     <div class="back product">
                                         <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct2.id}">
-                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive">
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                         </g:link>
                                     </div>
@@ -307,18 +309,18 @@
 
                     <div class="col-md-6 col-sm-6 a">
                         <div class="product">
-                            <div class="flip-container">
+                            <div class="flip-container flip-height">
                                 <div class="flipper">
                                     <div class="front product">
                                         <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct2.id}">
-                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive">
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                         </g:link>
                                     </div>
                                     <div class="back product">
                                         <g:link action="singleProduct" controller="endUser" id="${aboutUsInstance.specialProduct2.id}">
 
-                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive">
+                                            <img src="${resource(dir: "images/allProducts/specialImage",file: "${aboutUsInstance.specialProduct2.specialImageName}")}" alt="" class="img-responsive product-img">
 
                                         </g:link>
                                     </div>
@@ -377,7 +379,7 @@
     <div class="container">
         <div class="col-md-12 " >
 
-            <div class="agilenwew3lsfashions">
+            <div class="agilenwew3lsfashions about-background">
 
 
         </div>

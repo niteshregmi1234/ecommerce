@@ -73,160 +73,12 @@
 
     <link rel="shortcut icon" href="${resource(dir: 'js', file: 'yarsaa/favicon.png')}">
 
-<style>
-    .all{
-        padding: 70px;
-    }
-    .menu1 {
-        height:2em;
-        position:absolute;
-        top:50px;
-        width:100%;
-        z-index: 6;
-}
-.fixed {
-    position:fixed;
-    top:0;
-}
-    .product:hover{
-        box-shadow: 0 0 5px #888888;
-    }
-@media screen and (max-width:320px){
-    .lead1{
-        font-size:10px !important;
-        margin-top: 15%!important;
-        margin-bottom: -10px!important;
-
-    }
-   .lead2{
-       font-size: 8px!important;
-   }
-   .caption1{
-       top:2%!important;
-       left:51px!important;
-   }
-   .subButton{
-       margin-top: -27px!important;
-       font-size: 6px!important;
-
-   }
-   .agileinfonewsl{
-       width: 260px!important;
-       height:300px!important;
-   }
-    .coverUp img{
-        height: 120px !important;
-        width: 260px !important;
-
-    }
-    .coverDown img{
-        height: 120px !important;
-        width: 260px !important;
-
-    }
-
- .food1 img {
-     height: 300px!important;
- }
-}
-@media screen and (min-width: 321px) and (max-width:480px){
-    .lead1{
-        font-size:10px !important;
-        margin-top: 15%!important;
-        margin-bottom: -10px!important;
-
-    }
-    .lead2{
-        font-size: 8px!important;
-    }
-    .caption1{
-        top:2%!important;
-        left:51px!important;
-    }
-    .subButton{
-        margin-top: -27px!important;
-        font-size: 6px!important;
-
-    }
-    .agileinfonewsl{
-        width: 100% !important;
-        height:300px!important;
-    }
-    .coverUp img{
-        width: 420px !important;
-        height: 165px !important;
-
-    }
-    .coverDown img{
-        height: 150px !important;
-        width: 420px !important;
-
-    }
-
-    .food1 img {
-        height: 300px!important;
-    }
-}
-@media screen and (min-width:481px) and (max-width: 640px){
-    .lead1{
-        font-size:10px !important;
-        margin-top: 15%!important;
-        margin-bottom: -10px!important;
-
-    }
-    .lead2{
-        font-size: 8px!important;
-    }
-    .caption1{
-        top:2%!important;
-        left:51px!important;
-    }
-    .subButton{
-        margin-top: -27px!important;
-        font-size: 6px!important;
-
-    }
-    .agileinfonewsl{
-        width: 100%!important;
-        height:300px!important;
-    }
-    .coverUp img{
-        width: 580px !important;
-        height: 230px !important;
-
-    }
-    .coverDown img{
-        height: 150px !important;
-        width: 420px !important;
-
-    }
-
-    .food1 img {
-        height: 300px!important;
-    }
-
-}
-    @media screen and (min-width: 641px) and (max-width: 768px) {
-        .agileinfonewsl {
-            width: 100% !important;
-            height: 600px !important;
-
-        }
-    }
-    @media screen and (min-width: 769px) and (max-width: 1024px) {
-        .agileinfonewsl {
-            width: 100% !important;
-            height: 800px !important;
-        }
-    }
-
-</style>
     <script>
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > 50) {
-                $('.menu1').addClass('fixed');
+                $('.menu2').addClass('fixed');
             } else {
-                $('.menu1').removeClass('fixed');
+                $('.menu2').removeClass('fixed');
             }
         });
     </script>
@@ -293,7 +145,7 @@
 <!-- *** NAVBAR ***
  _________________________________________________________ -->
 
-<div class="navbar navbar-default yamm menu1" role="navigation" id="navbar">
+<div class="navbar navbar-default yamm menu2" role="navigation" id="navbar">
     <div class="container">
         <div class="navbar-header">
 
