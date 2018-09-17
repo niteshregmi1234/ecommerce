@@ -573,11 +573,19 @@ if(sizeId=='' && productId==''){
                     </div>
             <!--/.nav-collapse -->
 
-            <div class="navbar-collapse collapse right" id="search-not-mobile">
-                <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle search</span>
-                    <i class="fa fa-search"></i>
-                </button>
+            <div class="navbar-collapse collapse" id="search-not-mobile">
+            <g:form controller="endUser" action="search" class="" role="search" onsubmit="return validSearch();">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchProduct" name="search" placeholder="Search by product,category,brand wise..." value="${params?.q}">
+
+                    <span class="input-group-btn">
+
+                        <button type="submit" class="btn btn-primary" id="submit_Id"><i class="fa fa-search"></i></button>
+
+                    </span>
+
+                </div>
+            </g:form>
             </div>
 
         </div>

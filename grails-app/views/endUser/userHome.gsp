@@ -34,11 +34,12 @@
     %{--</div>--}%
     %{--<div class="container">--}%
         %{--<div class="col-md-12">--}%
+    <img src="https://dummyimage.com/1400x100/000/fff" class="img img-responsive ad-image" />
     <div id="wrapperTopBrand">
             <div class="box topBrandDiv">
 
             <div class="social">
-            <h2 style="color: #4fbfa8; margin-left: 8px;">Top Brands <g:link action="allBrands" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
+            <h2 style="color: #09175E; margin-left: 8px;">Top Brands <g:link action="allBrands" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
                 <% int j=0
                 k=0%>
 <g:each in="${totalArray[1]}" var="list" status="i">
@@ -70,15 +71,15 @@
     </div>
     </g:if>
 </div>
-
+    <img src="https://dummyimage.com/1400x100/000/fff" class="img img-responsive ad-image" />
     <g:if test="${totalArray[2]}">
         <div id="wrapperHotProduct">
-
+            <div class="boxBar">
+                <h2>Hot this week <g:link action="latestProducts" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
+            </div>
         <div id="hot" class="hot">
 
-        <div class="boxBar">
-            <h2>Hot this week <g:link action="latestProducts" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
-        </div>
+
             <div class="product-slider productHot" id="topDIv">
 <g:each in="${totalArray[2]}" var="list">
     <div class="item ">
@@ -136,18 +137,20 @@
 
 
 
-
+        <img src="https://dummyimage.com/1400x100/000/fff" class="img img-responsive ad-image" />
 
     </g:if>
 <g:if test="${totalArray[3]}">
     <div class="wrapperSalesProduct">
 
-<div id="hot" class="sales">
-
-    <div class="boxBarSales">
-        <h2>Top Sales <g:link action="topSales" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
+        <div class="boxBar">
+            <h2>Top Sales <g:link action="topSales" controller="endUser"><i class="fa fa-angle-double-right green-tooltip" data-toggle="tooltip" title="see more"></i></g:link></h2>
 
         </div>
+
+<div id="hot" class="sales">
+
+
 
             <div class="product-slider productHot">
                 <g:each in="${totalArray[3]}" var="list">
@@ -280,7 +283,7 @@
     </div>
     </div>
 
-
+    <img src="https://dummyimage.com/1400x100/000/fff" class="img img-responsive ad-image" />
 <br>
     <g:each in="${totalArray[4]}" var="listProducts">
         <div id="hot">

@@ -50,11 +50,11 @@
     .icon-arrow-right7{ left: 0; right: autp; }
 }
 #wrapperHotProduct{
-    margin-top: -20px;
+    /*margin-top: -20px;*/
     overflow:auto;
 }
 .wrapperSalesProduct{
-    margin-top: -40px;
+    /*margin-top: -40px;*/
     overflow:auto;
 }
 
@@ -67,12 +67,12 @@
     float:left;
 }
 .hotProductSide{
-    margin-top: 34px;
+    /*margin-top: 34px;*/
     width: 29%;
     float:right;
 }
 .salesProductSide{
-    margin-top: 39px;
+    /*margin-top: 39px;*/
     width: 29%;
     float:right;
 }
@@ -84,13 +84,13 @@
     margin-top: -50px;
 }
 .boxBarSales{
-    margin-top: -15px;
+    /*margin-top: -15px;*/
 }
 .boxBar{
-    margin-top: -20px;
+    /*margin-top: -20px;*/
 }
 .productHot{
-    margin-top: -25px;
+    /*margin-top: -25px;*/
 }
 .green-tooltip + .tooltip > .tooltip-inner {background-color: #4fbfa8;}
 
@@ -99,7 +99,7 @@
     font-size: 20px!important;
 }
 #wrapperTopBrand{
-    margin-top: -20px;
+    /*margin-top: -20px;*/
     overflow:auto;
 }
 
@@ -3836,5 +3836,10 @@ margin-top: -2px!important;
     #lastAd img{
         width: 100%;
     }
+}
+
+
+.ad-image{
+    padding: 15px 0px;
 }
 
