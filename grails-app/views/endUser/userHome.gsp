@@ -284,6 +284,8 @@
     </div>
 
     <img src="https://dummyimage.com/1400x100/000/fff" class="img img-responsive ad-image" />
+
+    
 <br>
     <g:each in="${totalArray[4]}" var="listProducts">
         <div id="hot">
