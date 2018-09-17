@@ -1,0 +1,3844 @@
+/*.billingFieldSmall{*/
+/*width: 201px;*/
+/*}*/
+/*.billingFieldLarge{*/
+/*width: 432px;*/
+/*}*/
+.icon {
+    background: rgba(255, 255, 255, .6);
+    color: rgba(0, 0, 0, .3);
+    font-family: 'FontAwesome';
+    font-size: 40px;
+    line-height: 60px;
+    margin-top: -30px;
+    position: absolute; top: 50%;
+    text-align: center;
+    width: 60px; height: 60px;
+}
+.owl-next,
+.owl-prev {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 33.33333333%;
+}
+.owl-next {
+    right: 0;
+}
+.owl-prev {
+    left: 0;
+}
+.owl-next:hover .icon,
+.owl-prev:hover .icon {
+    background: rgba(48, 117, 70, .8);
+    color: rgba(255, 255, 255, .9);
+}
+.icon-arrow-left7 { left: 0; }
+.icon-arrow-left7:before { content: "\f053"; }
+.icon-arrow-right7 { right: 0; }
+.icon-arrow-right7:before { content: "\f054"; }
+
+@media (min-width: 768px) {
+
+    .owl-next {
+        right: 60px;
+    }
+    .owl-prev {
+        left: 60px;
+    }
+    .icon-arrow-left7 { left: auto; right: 0; }
+    .icon-arrow-right7{ left: 0; right: autp; }
+}
+#wrapperHotProduct{
+    /*margin-top: -20px;*/
+    overflow:auto;
+}
+.wrapperSalesProduct{
+    /*margin-top: -40px;*/
+    overflow:auto;
+}
+
+.hot{
+    width: 70%;
+    float:left;
+}
+.sales{
+    width: 70%;
+    float:left;
+}
+.hotProductSide{
+    /*margin-top: 34px;*/
+    width: 29%;
+    float:right;
+}
+.salesProductSide{
+    /*margin-top: 39px;*/
+    width: 29%;
+    float:right;
+}
+.topBrandDiv{
+
+    margin-top: -20px;
+}
+.aid{
+    margin-top: -50px;
+}
+.boxBarSales{
+    /*margin-top: -15px;*/
+}
+.boxBar{
+    /*margin-top: -20px;*/
+}
+.productHot{
+    /*margin-top: -25px;*/
+}
+.green-tooltip + .tooltip > .tooltip-inner {background-color: #4fbfa8;}
+
+
+.social h2{
+    font-size: 20px!important;
+}
+#wrapperTopBrand{
+    /*margin-top: -20px;*/
+    overflow:auto;
+}
+
+.topBrandDiv{
+    width: 50%;
+    float:left;
+}
+
+.topBrandDivSide{
+    width: 49%;
+    float:right;
+}​
+ .red-tooltip + .tooltip > .tooltip-inner {background-color: #a94442;}
+.checkOutHead{
+    font-size: 35px;
+}
+.cartSuccessful{
+
+    height: 20px;
+    font-size: 20px;
+    color: #000;
+}
+.updateCart{
+    color:#4fbfa8;
+}
+.more{
+    margin-top: -65px;
+    margin-right: 90px;
+    text-align:right;
+    font-style: italic;
+}
+.textHeight{
+    margin-top: -20px;
+}
+.moreBrand{
+    margin-top: 150px;
+    margin-right: -16px;
+    text-align:right;
+    font-style: italic;
+    margin-bottom: -40px;
+}
+/*.tooltips {*/
+/*position: relative;*/
+/*}*/
+
+/*.tooltips .tooltiptext {*/
+/*visibility: hidden;*/
+/*width: 120px;*/
+/*background-color: #41b39c;*/
+/*color: #fff;*/
+/*text-align: center;*/
+/*border-radius: 6px;*/
+/*padding: 5px 0;*/
+/*position: absolute;*/
+/*z-index: 1;*/
+/*bottom: 150%;*/
+/*left: 50%;*/
+/*margin-left: -60px;*/
+/*}*/
+/*.tooltips .tooltiptext::after {*/
+/*content: "";*/
+/*position: absolute;*/
+/*top: 100%;*/
+/*left: 50%;*/
+/*margin-left: -5px;*/
+/*border-width: 5px;*/
+/*border-style: solid;*/
+/*border-color: #41b39c transparent transparent transparent;*/
+/*}*/
+
+/*.tooltips:hover .tooltiptext {*/
+/*visibility: visible;*/
+/*}*/
+
+.box{
+    text-overflow: ellipsis;
+    overflow: hidden;}
+#content .product .text h3 a{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/*.tooltip {*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*border-bottom: 1px dotted black;*/
+/*}*/
+
+/*.tooltip .tooltiptext {*/
+/*visibility: hidden;*/
+/*width: 120px;*/
+/*background-color: black;*/
+/*color: #fff;*/
+/*text-align: center;*/
+/*border-radius: 6px;*/
+/*padding: 5px 0;*/
+
+/*!* Position the tooltip *!*/
+/*position: absolute;*/
+/*z-index: 1;*/
+/*top: 100%;*/
+/*left: 50%;*/
+/*margin-left: -60px;*/
+/*}*/
+
+/*.tooltip:hover .tooltiptext {*/
+/*visibility: visible;*/
+/*}*/
+
+.wthreeshop-a {
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+.wthreeshop-a a {
+    padding: 10px 50px;
+    border: 2px solid #FFF;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+}
+.product-img{
+    height: 620px;
+    width: 100%;
+}
+.ribbon{
+    z-index:0 !important;
+}
+.img-about{
+    height:355px;
+    width:100%;
+}
+.box-height{
+    height:400px;
+}
+.product-color img{
+    height:240px;
+}
+.product-color{
+    height: 240px!important;
+}
+/*.product-color img{*/
+/*height: 238px;*/
+/*}*/
+
+.height-same{
+    height: 600px;
+}
+.about-background{
+    margin-bottom: 40px;
+}
+.price ul li {
+    font-size: 16px;
+    line-height: 40px;
+    display: block;
+    color: #000;
+}
+.lead1{
+    white-space: nowrap;
+    /*width: 17em;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.lead2{
+    white-space: nowrap;
+    /*width: 21em;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price ul li:nth-child(1) {
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pannel-tab .panel-heading {
+    padding: 15px;
+    border: none;
+    color: #FFF;
+    border-radius: 0;
+}
+.quote1{
+    padding: 0 !important;
+}
+.middle {
+    transition: .5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /*background: rgba(0, 0, 0, 0.75);*/
+}
+
+.middle1 {
+    position: absolute;
+    top: 20%;
+    left: -75px;
+    background: rgba(255, 255, 255, 0.22);
+    width:50%;
+    word-break: keep-all;
+}
+.agileinfonewsl {
+    /*background-image: url("../../imagess/yamsaa/newsletter.jpg");*/
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    height: 600px;
+    width: 1110px;
+}
+.text1 {
+
+    font-family: 'Sintony', sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+/*#content{*/
+/*padding-top: 110px;*/
+/*}*/
+.product-height{
+    height: 300px;
+    width: 203px;
+}
+.flip-height{
+    height: 241px;
+}
+.all{
+    padding: 70px;
+}
+
+/*.fixed {*/
+/*position:fixed;*/
+/*!*top:0;*!*/
+/*}*/
+.product:hover{
+    box-shadow: 0 0 5px #888888;
+}
+.front-img{
+    height: 360px;
+    width: 539px;
+}
+#content .product .text del.del-price{
+    font-style: italic;
+}
+/*.sildeshow1{*/
+/*height: 317px;*/
+/*}*/
+.panel-heading a{
+    color:#FFFFFF;
+    outline:0 !important;
+    text-decoration: none;
+}
+.panel-heading a:focus a:hover a:active{
+    color:#FFFFFF;
+    outline: 0 !important;
+    text-decoration: none;
+}
+.w3lsshoesaits-info h3 {
+    font-size: 50px;
+    color: #FFF;
+    text-shadow: 3px 3px #c41228;
+}
+.w3lsshoesaits-info p {
+    width: 50%;
+    line-height: 25px;
+    color: #FFF;
+    margin: 30px auto;
+}
+.img-texts{
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+.w3lsshoesaits-info{
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    left: 10%;
+}
+.height-img{
+    height: 500px;
+}
+.quote img{
+    height:600px;
+    width: 525px;
+}
+.agilenwew3lsfashions {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    padding: 150px 0;
+    text-align: center;
+    color: #FFF;
+}
+
+.about-product{
+    height: 857px;
+}
+.about-product img{
+    width: 560px!important;
+}
+
+.contact-img{
+    width: 100%;
+    height: 390px;
+}
+.contact-email{
+    word-break: break-all;
+}
+.name4{
+    width: 32% !important;
+    border-radius: 0px !important;
+    float: left;
+    margin-left: 50px;
+}
+.smallAbout img{
+    height: 198px;
+    width:262px;
+}
+
+#detailInfo::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#detailInfo::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+#detailInfo::-webkit-scrollbar-thumb
+{
+    background-color: #41b39c;
+}
+.discountBox {
+    border: 2px solid #f68b1e;
+    color: #f68b1e;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 700;
+    padding: 4px 2px;
+    float: right;
+    text-align: right;
+    margin-top: -45px;
+}
+.discountBox1 {
+    border: 2px solid #f68b1e;
+    color: #f68b1e;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 700;
+    padding: 4px 2px;
+    float: left;
+    margin-left: 80px;
+    margin-top: -63px;
+}
+.productDescription{
+    color: #000;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+.discountBoxDetail {
+    border: 2px solid #f68b1e;
+    color: #f68b1e;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 700;
+    padding: 4px 2px;
+    float: right;
+    margin-top: -45px;
+    margin-right: 306px;
+}
+
+@media screen and (max-width:240px){
+    .bigButton {
+        width: 135px!important;
+        height: 33px!important;
+        font-size: 9px!important;
+    }
+    .bigName{
+        word-wrap: break-word!important;
+    }
+    .product-color img{
+        height:120px!important;
+    }
+    .smallAbout img{
+        height: 198px!important;
+        width:295px!important;
+    }
+    .product-color{
+        height: 120px!important;
+    }
+    .wthreeshop-a a {
+        padding: 0px 0px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    /*#content {*/
+    /*padding-top: 115px;*/
+    /*}*/
+    .box-height{
+        height: 555px;
+    }
+    .text1{
+        padding: 6px 9px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 15px!important;
+    }
+    .mainImage-coverDown{
+        height:355px;
+        width: 100%;
+    }
+    .lead1{
+        font-size:5px !important;
+        margin-top: -40%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 3px!important;
+    }
+    .middle1{
+        top: 37% !important;
+        left: 53px !important;
+        height: 35px!important;
+        width: 50%!important;
+    }
+    .shop-button{
+        margin-top:0px !important;
+    }
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+    }
+    .imgage-nomargin{
+        height: 86px;
+    }
+    .agileinfonewsl{
+        width: 213px!important;
+        height:265px!important;
+    }
+
+
+    .product-img{
+        height: 390px;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 360px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .product-height {
+        height: 435px;
+    }
+    .wthreeshop-a a{
+        font-size: 4px!important;
+    }
+    .wthreeshop-a{
+        margin-top: -31px!important;
+    }
+    .w3lsshoesaits-info{
+        top: 0px;
+        margin-left: -37px!important;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+    .height-img{
+        height: 200px;
+    }
+    .img-texts{
+        height: 200px;
+    }
+    .about-product{
+        height: 675px;
+    }
+    .text-margin{
+        margin-top: -50px;
+    }
+    .sub-flipperHeight{
+        height:225px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width:241px) and (max-width: 280px){
+    .product-color img{
+        height:210px!important;
+    }
+    .smallAbout img{
+        height: 198px!important;
+        width:295px!important;
+    }
+    .product-color{
+        height: 210px!important;
+    }
+    .wthreeshop-a a {
+        padding: 1px 2px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    /*#content {*/
+    /*padding-top: 115px;*/
+    /*}*/
+    .box-height{
+        height: 555px;
+    }
+    .text1{
+        padding: 6px 9px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 15px!important;
+    }
+    .mainImage-coverDown{
+        height:355px;
+        width: 100%;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -20%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 74px !important;
+        height: 59px!important;
+        width: 50%!important;
+    }
+    .shop-button{
+        margin-top:0px !important;
+    }
+    .sildeshow1{
+        height: auto;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+    }
+    .imgage-nomargin{
+        height: 86px;
+    }
+    .agileinfonewsl{
+        width: 255px!important;
+        height:265px!important;
+    }
+
+    .product-img{
+        height: 390px;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 360px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .product-height {
+        height: 435px;
+    }
+    .wthreeshop-a a{
+        font-size: 7px;
+    }
+    .wthreeshop-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0px;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+    .height-img{
+        height: 200px;
+    }
+    .img-texts{
+        height: 200px;
+    }
+    .about-product{
+        height: 645px;
+    }
+    .text-margin{
+        margin-top: -50px;
+    }
+
+
+    .sub-flipperHeight{
+        height:225px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width:281px) and (max-width:300px){
+    .bigButton {
+        width: 187px!important;
+        height: 32px!important;
+        font-size: 13px!important;
+    }
+    .product-color img{
+        height:210px!important;
+    }
+    .smallAbout img{
+        height: 198px!important;
+        width:295px!important;
+    }
+    .product-color{
+        height: 210px!important;
+    }
+    .wthreeshop-a a {
+        padding: 1px 2px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    /*#content {*/
+    /*padding-top: 115px;*/
+    /*}*/
+    .box-height{
+        height: 555px;
+    }
+    .text1{
+        padding: 6px 9px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 15px!important;
+    }
+    .mainImage-coverDown{
+        height:355px;
+        width: 100%;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -20%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 74px !important;
+        height: 59px!important;
+        width: 50%!important;
+    }
+    .shop-button{
+        margin-top:0px !important;
+    }
+    .sildeshow1{
+        height: auto;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+    }
+    .imgage-nomargin{
+        height: 86px;
+    }
+    .agileinfonewsl{
+        width: 263px!important;
+        height:300px!important;
+    }
+
+    .product-img{
+        height: 390px;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 360px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .product-height {
+        height: 435px;
+    }
+    .wthreeshop-a a{
+        font-size: 7px;
+    }
+    .wthreeshop-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0px;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+    .height-img{
+        height: 200px;
+    }
+    .img-texts{
+        height: 200px;
+    }
+    .about-product{
+        height: 645px;
+    }
+    .text-margin{
+        margin-top: -50px;
+    }
+
+
+    .sub-flipperHeight{
+        height:225px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width:301px) and (max-width:320px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .deleteCartFromPopUp{
+        margin-top: 45px!important;
+    }
+    .popUpText{
+        margin-top: -4px!important;
+    }
+    .cartSuccessful{
+        font-size: 12px!important;
+    }
+    .noItem{
+        font-size: 14px!important;
+    }
+    .discountBox1{
+        padding: 1px 0px;
+    }
+    .detailName{
+        font-size: 10px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 50px;
+    }
+    .more{
+        margin-top: -65px!important;
+        margin-right: 35px!important;
+    }
+    .moreBrand{
+        margin-top: 70px!important;}
+    .product-color img{
+        height:210px!important;
+    }
+    .smallAbout img{
+        height: 198px!important;
+        width:295px!important;
+    }
+    .product-color{
+        height: 210px!important;
+    }
+    .wthreeshop-a a {
+        padding: 1px 2px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .text1{
+        padding: 6px 9px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 15px!important;
+    }
+    .mainImage-coverDown{
+        height:355px;
+        width: 100%;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -20%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 74px !important;
+        height: 59px!important;
+        width: 50%!important;
+    }
+    .shop-button{
+        margin-top:0px !important;
+    }
+    .sildeshow1{
+        height: auto;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+    }
+    .imgage-nomargin{
+        height: 86px;
+    }
+    .agileinfonewsl{
+        width: 290px!important;
+        height:300px!important;
+    }
+    .product-img{
+        height: 390px;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 360px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .wthreeshop-a a{
+        font-size: 7px;
+    }
+    .wthreeshop-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0px;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+    .height-img{
+        height: 200px;
+    }
+    .img-texts{
+        height: 200px;
+    }
+
+    .text-margin{
+        margin-top: -50px;
+    }
+    .sub-flipperHeight{
+        height:225px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+    .product-height{
+        width: 238px;
+        height: 325px;
+    }
+    .discountBox {
+        margin-left: 220px!important;
+    }
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 10px!important;
+    }
+    .priceWithDiscount{
+        font-size: 10px!important;
+        width: 187px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;
+
+    }
+
+
+}
+@media screen and (min-width: 321px) and (max-width:360px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 358px;
+    }
+    .hotProductSide img{
+        width: 358px;
+    }
+    .salesProductSide{
+        width: 358px;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 358px;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .deleteCartFromPopUp{
+        margin-top: 115px!important;
+    }
+    .popUpText{
+        margin-top: -4px!important;
+    }
+    .cartSuccessful{
+        font-size: 14px!important;
+    }
+    .noItem{
+        font-size: 16px!important;
+    }
+    .detailName{
+        font-size: 15px!important;
+    }
+    .errorSize{
+
+        font-size: 6px!important;
+
+    }
+    .discountBoxDetail {
+
+        margin-right: 85px;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    #addToCart{
+        margin-top: -20px;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .more {
+        margin-top: -70px!important;
+        margin-right: 24px!important;
+    }
+    .moreBrand{
+        margin-top: 80px!important;
+    }
+    .img-texts{
+        height: 142px!important;
+    }
+    .height-img{
+        height: 142px!important;
+
+    }
+    .smallAbout img{
+        height: 210px!important;
+        width:370px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+    .sildeshow1 {
+        height: 120px;
+    }
+    .wthreeshop-a a{
+        padding: 0 !important;
+        font-size:5px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+    .text1{
+        padding: -1px 9px;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 74px !important;
+        height: 59px!important;
+        width: 50%!important;
+    }
+
+    .box-height{
+        height: 180px!important;
+    }
+
+    .product-img{
+        height: 450px!important;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -40%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100% !important;
+        height:300px!important;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 415px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .button-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+
+    .about-product {
+        height: 700px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 47% !important;
+        border-radius: 0px !important;
+        float: left;
+        margin-left: 70px;
+        margin-bottom: 10px;
+    }
+    .product-height{
+        width: 278px;
+        height: 355px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 16px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        width: 200px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;;
+
+    }
+
+}
+@media screen and (min-width: 361px) and (max-width:411px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .deleteCartFromPopUp{
+        margin-top: 125px!important;
+    }
+    .popUpText{
+        margin-top: -4px!important;
+    }
+    .cartSuccessful{
+        font-size: 15px!important;
+    }
+    .noItem{
+        font-size: 17px!important;
+    }
+    #addToCart{
+        margin-top: -25px!important;
+    }
+
+    .errorSize{
+        font-size: 7px!important;
+
+    }
+    .discountBoxDetail{
+        margin-right: 110px;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .detailName{
+        font-size: 13px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more {
+        margin-top: -70px!important;
+        margin-right: 20px!important;
+    }
+    .moreBrand{
+        margin-top: 90px!important;}
+    .img-texts{
+        height: 142px!important;
+    }
+    .height-img{
+        height: 142px!important;
+
+    }
+    .product-color img{
+        height:260px!important;
+    }
+    .product-color{
+        height:260px!important;
+
+    }
+    .smallAbout img{
+        height: 210px!important;
+        width:370px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+    .wthreeshop-a a{
+        padding: 0 !important;
+        font-size:5px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+    .text1{
+        padding: -1px 9px;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 82px !important;
+        height: 59px!important;
+        width: 50%!important;
+    }
+
+    .product-img{
+        height: 450px!important;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -40%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100% !important;
+        height:300px!important;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 415px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .button-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+
+    .about-product {
+        height: 700px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 47% !important;
+        border-radius: 0px !important;
+        float: left;
+        margin-left: 70px;
+        margin-bottom: 10px;
+    }
+
+    .product-height{
+        width: 302px;
+        height: 370px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 16px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        margin-top: -2px!important;
+        width: 250px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;
+        margin-top: -2px!important;
+    }
+
+}
+
+@media screen and (min-width: 412px) and (max-width:413px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 414px;
+    }
+    .hotProductSide img{
+        width: 414px;
+    }
+    .salesProductSide{
+        width: 414px;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 414px;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .noItem{
+        font-size: 17px!important;
+    }
+    .deleteCartFromPopUp{
+        margin-top: 124px!important;
+    }
+    .popUpText{
+        margin-top: -4px!important;
+    }
+    .errorSize{
+        font-size: 9px!important;
+
+    }
+    .cartSuccessful{
+        font-size: 15px!important;
+    }
+    .detailName{
+        font-size: 15px!important;
+    }
+    .discountBoxDetail {
+
+        margin-right: 145px;
+    }
+    #mainImage img{
+        width: 350px!important;
+    }
+
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more{
+        margin-top: -70px!important;
+        margin-right: 35px!important;
+    }
+    .moreBrand{
+        margin-top: 100px!important;}
+    .img-texts{
+        height: 142px!important;
+    }
+    .height-img{
+        height: 142px!important;
+
+    }
+
+    .smallAbout img{
+        height: 230px!important;
+        width:400px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+    .sildeshow1 {
+        height: 120px;
+    }
+    .wthreeshop-a a{
+        padding: 0 !important;
+        font-size:5px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+    .text1{
+        padding: -1px 9px;
+    }
+    .middle1{
+        top: 29% !important;
+        left: 99px !important;
+        height: 75px!important;
+        width: 50%!important;
+    }
+
+
+    .product-img{
+        height: 450px!important;
+    }
+    .lead1{
+        font-size:8px !important;
+        margin-top: -24%!important;
+        margin-bottom: -20px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100% !important;
+        height:300px!important;
+    }
+
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 450px !important;
+    }
+    .height-same{
+        height: 450px!important;
+    }
+    .button-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+
+    .about-product {
+        height: 700px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 47% !important;
+        border-radius: 0px !important;
+        float: left;
+        margin-left: 70px;
+        margin-bottom: 10px;
+    }
+    .product-height{
+        width: 340px;
+        height: 420px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 18px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        width: 250px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;;
+
+    }
+}
+
+@media screen and (min-width: 414px) and (max-width:440px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .deleteCartFromPopUp{
+        margin-top: 70px!important;
+    }
+    .popUpText{
+        margin-top: -4px!important;
+    }
+    .cartSuccessful{
+        font-size: 12px!important;
+    }
+    .noItem{
+        font-size: 14px!important;
+    }
+    .discountBox1{
+        padding: 1px 0px;
+    }
+    .detailName{
+        font-size: 13px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 155px!important;
+    }
+    .errorSize{
+        font-size: 9px!important;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more{
+        margin-top: -70px!important;
+        margin-right: 45px!important;
+    }
+    .moreBrand{
+        margin-top: 100px!important;}
+    .img-texts{
+        height: 142px!important;
+    }
+    .height-img{
+        height: 142px!important;
+
+    }
+
+    .smallAbout img{
+        height: 360px!important;
+        width:450px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+
+    .wthreeshop-a a{
+        padding: 0 !important;
+        font-size:5px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+    .text1{
+        padding: -1px 9px;
+    }
+    .middle1{
+        top: 38% !important;
+        left: 115px !important;
+        height: 70px!important;
+        width: 47%!important;
+    }
+
+
+    .product-img{
+        height: 450px!important;
+    }
+    .lead1{
+        font-size:8px !important;
+        margin-top: -22%!important;
+        margin-bottom: -19px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100% !important;
+        height:300px!important;
+    }
+
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 700px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .button-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+
+
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 47% !important;
+        border-radius: 0px !important;
+        float: left;
+        margin-left: 70px;
+        margin-bottom: 10px;
+    }
+    .about-product {
+        height: 845px!important;
+    }
+
+    .product-height{
+        width: 332px;
+        height: 395px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 12px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        width: 250px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;
+    }
+
+
+
+
+
+}
+@media screen and (min-width: 441px) and (max-width:480px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .discountBoxDetail{
+        margin-right: 215px;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+    .more{
+        margin-right: 30px!important;
+    }
+    .moreBrand{
+        margin-top: 122px!important;}
+    .img-texts{
+        height: 142px!important;
+    }
+    .height-img{
+        height: 142px!important;
+
+    }
+    .product-color img{
+        height:260px!important;
+    }
+    .product-color{
+        height:260px!important;
+
+    }
+    .smallAbout img{
+        height: 360px!important;
+        width:450px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+
+    .wthreeshop-a a{
+        padding: 0 !important;
+        font-size:5px;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+    .text1{
+        padding: -1px 9px;
+    }
+    .middle1{
+        top: 38% !important;
+        left: 115px !important;
+        height: 70px!important;
+        width: 47%!important;
+    }
+
+
+    .product-img{
+        height: 450px!important;
+    }
+    .lead1{
+        font-size:8px !important;
+        margin-top: -22%!important;
+        margin-bottom: -19px!important;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+
+
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100% !important;
+        height:300px!important;
+    }
+    .small-screen{
+        padding-top: 20px;
+    }
+    .about-img{
+        height: 700px !important;
+    }
+    .height-same{
+        height: 450px;
+    }
+    .button-a{
+        margin-top: -20px;
+    }
+    .w3lsshoesaits-info{
+        top: 0;
+    }
+    .w3lsshoesaits-info h3 {
+        font-size: 16px;
+    }
+    .w3lsshoesaits-info p {
+        line-height: 25px;
+        color: #FFF;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+        width: 18em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    a.a-buttonsize{
+        font-size: 10px!important;
+    }
+
+    .about-product {
+        height: 700px;
+    }
+    .contact-img{
+        height: 240px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .name4{
+        width: 47% !important;
+        border-radius: 0px !important;
+        float: left;
+        margin-left: 70px;
+        margin-bottom: 10px;
+    }
+    .about-product {
+        height: 845px!important;
+    }
+
+
+
+    .product-color img{
+        height:350px!important;
+    }
+    .product-color{
+        height:350px!important;
+
+    }
+
+    .product-height{
+        width: 173px;
+        height: 270px;
+    }
+    .priceWithDiscount{
+        font-size: 16px!important;
+        width: 135px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 16px!important;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width: 520px){
+    .lead1{
+        font-size:10px !important;
+        margin-top: 15%!important;
+        margin-bottom: -10px!important;
+
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top:2%!important;
+        left:51px!important;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100%!important;
+        height:300px!important;
+    }
+
+
+
+    .height-img{
+        height: 306px;
+    }
+    .w3lsshoesaits-info{
+        top: 10%;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+}
+@media screen and (min-width:521px) and (max-width: 568px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more{
+        margin-top: -70px!important;
+        margin-right: 35px!important;
+    }
+    .moreBrand{
+        margin-top: 140px!important;
+    }
+    .smallAbout img{
+        height: 360px!important;
+        width:545px!important;
+    }
+
+    .lead1{
+        font-size:9px !important;
+        margin-top: -17%!important;
+        margin-bottom: -18px!important;
+
+    }
+    .wthreeshop-a a {
+        margin-top: -12%;
+        padding: 0px 0px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top:26%!important;
+        left:137px!important;
+        height: 107px!important;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100%!important;
+        height:300px!important;
+    }
+
+    .about-product{
+        height: 945px!important;
+    }
+
+    .height-img{
+        height: 500px!important;
+    }
+
+    .w3lsshoesaits-info{
+        top: 10%;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .product-height{
+        width: 200px;
+        height: 295px;
+    }
+
+    .productDescription{
+        font-weight: 500!important;
+        font-size: 14px!important;
+    }
+    .priceWithDiscount{
+        font-size: 15px!important;
+        width: 135px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 15px!important;
+    }
+
+
+
+}
+@media screen and (min-width:569px) and (max-width: 599px){
+    .lead1{
+        font-size:10px !important;
+        margin-top: 15%!important;
+        margin-bottom: -10px!important;
+
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top:2%!important;
+        left:51px!important;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100%!important;
+        height:300px!important;
+    }
+    .height-img{
+        height: 306px;
+    }
+    .w3lsshoesaits-info{
+        top: 10%;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+}
+@media screen and (min-width:600px) and (max-width: 620px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 595px;
+    }
+    .hotProductSide img{
+        width: 595px;
+    }
+    .salesProductSide{
+        width: 595px;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 595px;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #mainImage img{
+        width: 100%;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+    .more {
+
+        margin-right: 20px;
+    }
+    .moreBrand{
+        margin-top: 165px!important;}
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .smallAbout img{
+        height: 330px!important;
+        width:570px!important;
+    }
+    .about-img{
+        height: 650px !important;
+        width: 540px!important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:140px!important;
+        width: 50%!important;
+        top: 20%!important;
+        height: 132px!important;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+    .height-img{
+        height: 500px!important;
+    }
+    .lead1{
+        font-size:10px !important;
+        margin-top: -15%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .wthreeshop-a a {
+        margin-top: -12%;
+        padding: 3px 6px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    .product-height{
+        width: 233px;
+        height: 340px;
+    }
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 16px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        margin-top: -2px!important;
+        width: 187px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;
+        margin-top: -2px!important;
+    }
+
+
+}
+@media screen and (min-width:621px) and (max-width: 640px){
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #zoom{
+        width: 580px;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more {
+        margin-right: 30px!important;
+    }
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .smallAbout img{
+        height: 330px!important;
+        width:615px!important;
+    }
+    .about-img{
+        height: 700px !important;
+        width: 590px!important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:140px!important;
+        width: 50%!important;
+        top: 20%!important;
+        height: 132px!important;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+
+    .lead1{
+        font-size:10px !important;
+        margin-top: -15%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .wthreeshop-a a {
+        margin-top: -12%;
+        padding: 3px 6px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    .product-height{
+        width: 278px;
+        height: 350px;
+    }
+    .discountBox {
+        margin-left: 220px!important;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 16px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        width: 200px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;
+
+    }
+
+
+}
+
+
+@media screen and (min-width: 641px) and (max-width: 666px) {
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:-240px;
+        width: 100%;
+        top: 5%;
+    }
+    .sildeshow1 {
+        height: 240px;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+}
+@media screen and (min-width: 667px) and (max-width: 700px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #zoom{
+        width: 100%;
+    }
+    .more{
+
+        margin-right: 30px!important;
+    }
+    .about-img{
+        height: 900px!important;
+        width: 610px!important;
+    }
+
+    .smallAbout img{
+        height: 410px!important;
+        width:645px!important;
+    }
+
+    .lead1{
+        font-size:13px !important;
+        margin-top: -12%!important;
+        margin-bottom: -19px!important;
+
+    }
+    .wthreeshop-a a {
+        margin-top: -10%;
+        padding: 3px 6px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+    .lead2{
+        font-size: 8px!important;
+    }
+    .middle1{
+        top:29%!important;
+        left:160px!important;
+        height: 107px!important;
+    }
+    .subButton{
+        margin-top: -27px!important;
+        font-size: 6px!important;
+
+    }
+    .agileinfonewsl{
+        width: 100%!important;
+        height:300px!important;
+    }
+
+
+    .w3lsshoesaits-info{
+        top: 10%;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+    .product-height{
+        width: 267px;
+        height: 335px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 14px!important;
+    }
+    .priceWithDiscount{
+        font-size: 15px!important;
+        width: 218px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 15px!important;;
+
+    }
+
+}
+@media screen and (min-width: 701px) and (max-width: 725px) {
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .smallAbout img{
+        height: 800px!important;
+        width:675px!important;
+    }
+    .about-img{
+        height: 700px !important;
+        width: 590px!important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:174px!important;
+        width: 50%!important;
+        top: 23%!important;
+        height: 132px!important;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+    .product-height{
+        height: 460px!important;
+    }
+
+    .product-color img{
+        height:600px!important;
+    }
+
+    .product-color{
+        height:600px!important;
+
+    }
+    .about-product{
+        height: 765px!important;
+        width: 675px!important;
+    }
+
+    .height-img{
+        height: 500px!important;
+    }
+    .lead1{
+        font-size:14px !important;
+        margin-top: -10%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .wthreeshop-a a {
+        margin-top: -12%;
+        padding: 3px 6px!important;
+        border: 1px solid #FFF !important;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+    }
+
+}
+
+@media screen and (min-width: 726px) and (max-width: 735px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #zoom{
+        width: 100%;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+
+    .more{
+        margin-top: -70px!important;
+        margin-right: 35px!important;
+    }
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .smallAbout img{
+        height: 400px!important;
+        width:705px!important;
+    }
+    .about-img{
+        height: 780px !important;
+        width: 675px!important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:174px!important;
+        width: 50%!important;
+        top: 15%!important;
+        height: 175px!important;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+
+
+
+
+    .lead1{
+        font-size:16px !important;
+        margin-top: -8%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .product-height{
+        width: 299px;
+        height: 400px;
+    }
+
+    .productDescription{
+        font-weight: 400!important;
+        font-size: 18px!important;
+    }
+    .priceWithDiscount{
+        font-size: 18px!important;
+        width: 250px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 18px!important;;
+
+    }
+}
+@media screen and (min-width: 736px) and (max-width: 749px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #zoom{
+        width: 100%;
+    }
+    .more{
+
+        margin-right: 35px!important;
+    }
+
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+
+    .smallAbout img{
+        height: 440px!important;
+        width:710px!important;
+    }
+    .about-img{
+        height: 750px !important;
+        width: 675px!important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:177px!important;
+        width: 50%!important;
+        top: 15%!important;
+        height: 172px!important;
+    }
+
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+
+    .lead1{
+        font-size:16px !important;
+        margin-top: -8%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .text-center{
+        margin-top: -5px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+
+    .bigName{
+        font-size: 18px!important;
+        margin-top: -13px!important;
+
+    }
+    .bigName1{
+        font-size: 20px!important;
+        margin-top: -20px!important;
+
+    }
+    .box-height{
+        height: 200px!important;
+    }
+    .product-height{
+        width: 301px;
+        height: 380px;
+    }
+
+    .productDescription{
+        font-weight: 500!important;
+        font-size: 14px!important;
+    }
+    .priceWithDiscount{
+        font-size: 15px!important;
+        width: 235px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 15px!important;
+    }
+
+
+}
+@media screen and (min-width: 750px) and (max-width: 768px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .detailBox{
+        height: 330px!important;
+    }
+    .detailName{
+        font-size: 15px!important;
+        margin-top: -10px!important;
+    }
+    .goToDescription{
+        margin-top: -15px!important;
+    }
+    .productDetailPrice{
+        margin-top: -18px!important;
+        font-size: 15px!important;
+    }
+    .colorSection{
+        margin-top: -35px;!important;
+    }
+    .title-attr{
+        margin-top: -10px!important;
+    }
+    #errorSize{
+        font-size: 8px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 155px!important;
+    }
+    .more{
+        margin-right: 30px!important;
+    }
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 600px !important;
+    }
+    .product-img{
+        height: 490px;
+    }
+    .smallAbout img{
+        height: 250px!important;
+        width:385px!important;
+    }
+    .about-img{
+        height: 598px !important;
+    }
+    .screen1{
+        padding-top: 20px;
+    }
+    .box-text{
+        white-space: nowrap;
+        width: 22em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .middle1{
+        left:-52px!important;
+        width: 50%!important;
+        top: 15%!important;
+        height: 184px!important;
+    }
+    .height-img{
+        height: 365px;
+    }
+    .contact-img{
+        height: 270px;
+    }
+    .boxsize-small{
+        margin-top: 30px;
+    }
+    .about-product{
+        height: 640px!important;
+        width: 345px!important;
+    }
+
+    .height-img{
+        height: 500px!important;
+    }
+    .lead1{
+        font-size:16px !important;
+        margin-top: -8%!important;
+        margin-bottom: -12px!important;
+
+    }
+    .lead2{
+        font-size: 10px!important;
+    }
+    .product-height{
+        width: 308px;
+        height: 385px!important;
+    }
+    .product-height img{
+        width: 100%;
+    }
+    .priceWithDiscount{
+        font-size: 16px!important;
+        width: 285px!important;
+    }
+    .priceWithoutDiscount{
+        font-size: 16px!important;
+    }
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 855px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    .errorSize{
+        font-size: 7px!important;
+        margin-top: -3px!important;
+    }
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .detailName{
+        font-size: 13px!important;
+        margin-top: -5px!important;
+    }
+    .detailBox{
+        height:330px!important;
+    }
+    .productDetailPrice{
+        font-size: 13px!important;
+        margin-top: -15px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 140px!important;
+    }
+    .colorSection{
+        margin-top: -15px!important;
+    }
+    .title-attr{
+        margin-top: -5px!important;
+
+    }
+    #addToCart{
+        margin-top: -15px!important;
+    }
+    .delPriceDetail{
+        margin-top: -20px!important;
+    }
+    .more{
+
+        margin-right: 60px!important;
+    }
+    .moreBrand{
+        margin-top: 190px!important;}
+
+    .smallAbout img{
+        height: 250px!important;
+        width:385px!important;
+    }
+
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+
+    .product-height{
+        height: 300px!important;
+    }
+    .lead1{
+        font-size:16px !important;
+        margin-top: 7%!important;
+        margin-bottom: -18px!important;
+
+    }
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 800px !important;
+    }
+
+    .middle1{
+        top:13% !important;
+        left: -65px!important;
+        height: 185px!important;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (min-width: 856px) and (max-width: 961px) {
+    #lastAd{
+        margin-top: 10px;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+    .topBrandDivSide{
+        margin-top: -18px;
+        width: 100%;
+    }
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .topBrandDiv{
+        width: 100%;
+    }
+    #zoom{
+        width: 100%;
+    }
+    .detailBox{
+        height: 330px!important;
+    }
+    .detailName{margin-top: -15px!important;font-size: 15px!important;}
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .productDetailPrice{
+        font-size: 12px!important;
+        margin-top: -20px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 125px!important;
+    }
+    .delPriceDetail{
+        margin-top: -25px!important;
+    }
+    .title-attr{
+        margin-top: -5px!important;
+    }
+    .errorSize{
+        font-size: 8px!important;
+    }
+    #addToCart{
+        margin-top: -20px!important;
+    }
+    .more{
+
+        margin-right: 125px!important;
+    }
+    .smallAbout img{
+        height: 250px!important;
+        width:385px!important;
+    }
+    .wthreeshop-a {
+        margin-top: -20px;
+        padding-bottom: 10px;
+    }
+
+    .lead1{
+        font-size:16px !important;
+        margin-top: 7%!important;
+        margin-bottom: -18px!important;
+
+    }
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 800px !important;
+    }
+
+    .middle1{
+        top:13% !important;
+        left: -65px!important;
+        height: 185px!important;
+    }
+    .price ul li:nth-child(1) {
+        font-size: 30px;
+    }
+
+}
+@media screen and (min-width: 962px) and (max-width: 1024px) {
+    .aid{
+        margin-top: 10px;
+    }
+    .boxBarSales{
+        margin-top: 40px;
+    }
+    .sales{
+        width: 100%;
+    }
+    .hotProductSide{
+        margin-top: -50px;
+        width: 100%;
+    }
+    .hotProductSide img{
+        width: 100%;
+    }
+    .salesProductSide{
+        width: 100%;
+        margin-top: -50px;
+    }
+    .salesProductSide img{
+        width: 100%;
+    }
+    .boxBar{
+        margin-top: 0px;
+    }
+    .hot{
+        width: 100%;
+    }
+
+    #zoom{
+        width: 400px!important;
+    }
+    .detailBox{
+        height: 400px!important;
+    }
+    .detailName{margin-top: -15px!important;font-size: 15px!important;}
+    .goToDescription{
+        margin-top: -20px!important;
+    }
+    .productDetailPrice{
+        margin-top: -20px!important;
+    }
+    .discountBoxDetail{
+        margin-right: 220px!important;
+    }
+    .more {
+        margin-right: 55px !important;
+    }
+
+    .moreBrand {
+        margin-top: 142px !important;
+    }
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 800px !important;
+    }
+
+    .slideshow1 {
+        height: 370px !important;
+    }
+
+    .middle1 {
+        top: 13% !important;
+        left: -65px;
+    }
+
+    .price ul li:nth-child(1) {
+        font-size: 25px;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+    .agileinfonewsl {
+        width: 100% !important;
+        height: 800px !important;
+    }
+
+    .middle1 {
+        top: 13% !important;
+        left: -65px;
+    }
+
+    .price ul li:nth-child(1) {
+        font-size: 25px;
+    }
+}
+@media screen and (min-width: 1440px){
+    .topBrandDivSide img{
+        width: 100%;
+    }
+    .smallBoxAd{
+        width: 100%;
+    }
+    #lastAd img{
+        width: 100%;
+    }
+}
+
+
+.ad-image{
+    padding: 15px 0px;
+}

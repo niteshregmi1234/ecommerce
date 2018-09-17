@@ -19,12 +19,32 @@
 <form class="form-horizontal">
     <div class="col-lg-12">
         <div class="form-group ">
+            <label class="control-label col-sm-2">Specification Name:</label>
+            <div class="col-sm-6">
+                <div style="margin-top: 7px;"><g:link action="show" id="${productSubCategoryInstance.productSubCategorySpecify.id}" controller="productSubCategorySpecify"> ${productSubCategoryInstance.productSubCategorySpecify.specificationName}</g:link></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="form-group ">
             <label class="control-label col-sm-2">Sub-Category Name:</label>
             <div class="col-sm-6">
                 <div style="margin-top: 7px;">${productSubCategoryInstance.subCategoryName}</div>
             </div>
         </div>
     </div>
+
+    <div class="col-lg-12">
+        <div class="form-group ">
+            <label class="control-label col-sm-2">Cover Image:</label>
+            <div class="col-sm-6">
+                <img src="${createLink(controller: 'imageRender', action:'renderImage',params: [imageName:productSubCategoryInstance.coverImageName])}" height="100" style="margin-left: -1%">
+
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-12">
         <div class="form-group ">
             <label class="control-label col-sm-2">Show Status:</label>
@@ -33,12 +53,36 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="form-group ">
+            <label class="control-label col-sm-2">Show in Footer:</label>
+            <div class="col-sm-6">
+                <div style="margin-top: 7px;">${productSubCategoryInstance.isFooter} </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="form-group ">
+            <label class="control-label col-sm-2">Show in Home Page:</label>
+            <div class="col-sm-6">
+                <div style="margin-top: 7px;">${productSubCategoryInstance.showInHomePage} </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="form-group ">
+            <label class="control-label col-sm-2">Description:</label>
+            <div class="col-sm-6">
+                <div style="margin-top: 7px;">${productSubCategoryInstance.subCategoryDescription} </div>
+            </div>
+        </div>
+    </div>
 
 </form>
 <div class="col-lg-12">
-    <g:link action="edit" id="${productSubCategoryInstance?.id}" controller="productSubCategory" class="btn btn-primary navbar-btn">Edit</g:link>
-    <g:link action="delete" id="${productSubCategoryInstance?.id}" controller="productSubCategory" class="btn btn-primary navbar-btn">Delete</g:link>
-
+    <g:link action="edit" id="${productSubCategoryInstance?.id}" controller="productSubCategory" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-primary navbar-btn">Edit</g:link>
+    <g:link action="delete" id="${productSubCategoryInstance?.id}" controller="productSubCategory" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-primary navbar-btn">Delete</g:link>
 </div>
 </body>
 </html>

@@ -21,12 +21,22 @@
         <div class="form-group ">
             <label class="control-label col-sm-2">Image:</label>
             <div class="col-sm-6">
-                <img src="${resource(dir: "images/coverImage",file: "${coverImageInstance.imageName}")}" height="100" style="margin-left: -1%">
+                <img src="${createLink(controller: 'imageRender', action:'renderImage',params: [imageName:coverImageInstance.imageName])}" height="100" style="margin-left: -1%">
 
-                <div style="margin-top: 7px;">${coverImageInstance.imageName}</div>
+
+        </div>
+    </div>
+        </div>
+    <div class="col-lg-12">
+        <div class="form-group ">
+            <label class="control-label col-sm-2">Offer Brand:</label>
+            <div class="col-sm-6">
+
+<div style="margin-top: 7px;"><g:link action="show" id="${coverImageInstance.productBrand.id}" controller="productBrand">${coverImageInstance.productBrand.brandName}</g:link></div>
             </div>
         </div>
     </div>
+
     <div class="col-lg-12">
         <div class="form-group ">
             <label class="control-label col-sm-2">Show Status:</label>
@@ -46,8 +56,8 @@
 
 </form>
 <div class="col-lg-12">
-    <g:link action="edit" id="${coverImageInstance?.id}" controller="coverImage" class="btn btn-primary navbar-btn">Edit</g:link>
-    <g:link action="delete" id="${coverImageInstance?.id}" controller="coverImage" class="btn btn-primary navbar-btn">Delete</g:link>
+    <g:link action="edit" id="${coverImageInstance?.id}" controller="coverImage" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-primary navbar-btn">Edit</g:link>
+    <g:link action="delete" id="${coverImageInstance?.id}" controller="coverImage" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-primary navbar-btn">Delete</g:link>
 
 </div>
 </body>

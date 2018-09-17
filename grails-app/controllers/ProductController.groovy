@@ -1,302 +1,695 @@
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
-
 import javax.imageio.ImageIO
 import java.awt.Image
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class ProductController {
+class ProductController extends BaseController {
+    static allowedMethods = [saveViewOfImages:'POST',checkPhoto: 'POST',save: 'POST',uploadSpecialImage: 'POST',editSpecialImage: 'POST',uploadThumbnailImage: 'POST',uploadMediumImage: 'POST',uploadZoomImage: 'POST',changeDiscount: 'POST',changeIsLatest: 'POST',deleteView: 'POST',editMediumImage: 'POST',editThumbnailImage: 'POST']
     final static Pattern PATTERN = Pattern.compile("(.*?)(?:\\((\\d+)\\))?(\\.[^.]*)?");
-
-def checkPhoto(){
-    def Image = request.getFile('Image')
-
-    def checkFile
-    Image trueImage = ImageIO.read(Image.getInputStream());
-
-    if (trueImage == null) {
-
-        checkFile = "Photo bad format"
-        render checkFile
-    }
-
-    else{
-        checkFile="perfect"
-        render checkFile
-    }
-}
-    def list() {
-        def productList=Product.list()
-        render(view: "list",model: [productList:productList])
-    }
+    def productService
     def create(){
 
     }
-    def save(){
-        if(!params.id){
-            def product=new Product()
-            product.productCategory=ProductCategory.get(params.productCategory)
-            product.productSubCategory=ProductSubCategory.get(params.productSubCategory)
-            product.productColor=ProductColor.get(params.productColor)
-            product.productSize=ProductSize.get(params.productSize)
-            product.frontImageName=upLoadFrontImage()
-            product.sideImageName=uploadSideImage()
-            product.backImageName=uploadBackImage()
-            product.name=params.name
-            product.productBrand=ProductBrand.get(params.productBrand)
-            product.price=params.price as float
-            product.isSale=params.isSale as boolean
-            if(product.isSale==true){
-                product.discountPercentage=params.discountPercentage as float
+    def deleteView(){
+        try{
+        if(session.adminUser) {
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+          def productView=ProductView.findByDelFlagAndId(false,params.id)
+            if(productView){
+                productView.delFlag=true
+                productView.save(flush: true)
+            render "successfully deleted the view"
             }
-            else{
-                product.discountPercentage=0
+                else{
+                render "unable to delete view"
             }
-            product.isFeatured=params.isFeatured as boolean
-            product.isLatest=params.isLatest as boolean
-            product.isMenuBar=params.isMenuBar as boolean
-            product.description=params.description
-            product.save(flush: true)
-            redirect(action: "show" ,id:product.id)
+            }
         }
-        else{
-            def product=Product.get(params.id)
-            product.productCategory=ProductCategory.get(params.productCategory)
-            product.productSubCategory=ProductSubCategory.get(params.productSubCategory)
-            product.productColor=ProductColor.get(params.productColor)
-            product.productSize=ProductSize.get(params.productSize)
-            product.frontImageName=editFrontImage(product.frontImageName)
-            product.sideImageName=editSideImage(product.sideImageName)
-            product.backImageName=editBackImage(product.backImageName)
-            product.name=params.name
-            product.productBrand=ProductBrand.get(params.productBrand)
-            product.price=params.price as float
-            product.isSale=params.isSale as boolean
-            if(product.isSale==true){
-                product.discountPercentage=params.discountPercentage as float
-            }
-            else{
-                product.discountPercentage=0
-            }
-            product.isFeatured=params.isFeatured as boolean
-            product.isLatest=params.isLatest as boolean
-            product.description=params.description
-            print params.isMenuBar
-            product.isMenuBar=params.isMenuBar as boolean
-            product.save(flush: true)
-            redirect(action: "show" ,id:product.id)
+        }
+        catch (Exception e){
+            render "server encountered problem"
+
         }
     }
-    def editFrontImage(String imageNameOld){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("frontImageName")
-if(file.size>0){
-        File fileOld= new File("web-app/images/allProducts/frontImage/${imageNameOld}")
-        fileOld.delete();
-                String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/frontImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
-            }
+    def changeIsLatest(){
+        try{
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productList = Product.findAllByDelFlag(false)
+                    for (Product product : productList) {
+                        product.isLatest = params.isLatest as byte
+                        product.save(flush: true)
+                        render(view: "setUpIsLatest")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+                }
+            }            }
+        catch (Exception e){
+
         }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/frontImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName}
-        else{
-    return imageNameOld
-}
+    }
+    def latestShortcut(){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+            render(view: "setUpIsLatest")
+        }
+        else {
+                redirect(action: "adminLoginForm", controller: "login")
+
+            }        }
+    }
+    def changeDiscount(){
+    try{
+        if(session.adminUser) {
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                def brandIds = params.brand
+                def categoryIds = params.category
+                def specificationIds = params.specification
+                def subCategoryIds = params.subCategory
+                if (brandIds) {
+                    brandIds = new ArrayList<>(Arrays.asList(brandIds))
+                }
+                if (categoryIds) {
+
+                    categoryIds = new ArrayList<>(Arrays.asList(categoryIds))
+                }
+                if (specificationIds) {
+
+                    specificationIds = new ArrayList<>(Arrays.asList(specificationIds))
+                }
+                if (subCategoryIds) {
+
+                    subCategoryIds = new ArrayList<>(Arrays.asList(subCategoryIds))
+                }
+                def discountPercentage = params.discountPercentage as float
+                if (brandIds && categoryIds && specificationIds && subCategoryIds) {
+                    productService.changeDiscountIfAll(brandIds, categoryIds, specificationIds, subCategoryIds, discountPercentage)
+
+                } else if (brandIds && specificationIds && subCategoryIds) {
+                    productService.changeDiscountIfBrandAndSpecificationAndSubCategory(brandIds, specificationIds, subCategoryIds, discountPercentage)
+                } else if (categoryIds && specificationIds && subCategoryIds) {
+                    productService.changeDiscountIfCategoryAndSpecificationAndSubCategory(specificationIds, categoryIds, subCategoryIds, discountPercentage)
+                } else if (brandIds && categoryIds && subCategoryIds) {
+                    productService.changeDiscountIfBrandAndCategoryAndSubCategory(brandIds, categoryIds, subCategoryIds, discountPercentage)
+
+                } else if (brandIds && categoryIds && specificationIds) {
+                    productService.changeDiscountIfBrandAndSpecificationAndCategory(brandIds, categoryIds, specificationIds, discountPercentage)
+                } else if (brandIds && categoryIds) {
+                    productService.changeDiscountIfBrandAndCategory(brandIds, categoryIds, discountPercentage)
+                } else if (brandIds && specificationIds) {
+                    productService.changeDiscountIfBrandAndSpecification(brandIds, specificationIds, discountPercentage)
+                } else if (brandIds && subCategoryIds) {
+                    productService.changeDiscountIfBrandAndSubCategory(brandIds, subCategoryIds, discountPercentage)
+                } else if (categoryIds && specificationIds) {
+                    productService.changeDiscountIfSpecificationAndCategory(categoryIds, specificationIds, discountPercentage)
+                } else if (subCategoryIds && specificationIds) {
+                    productService.changeDiscountIfSpecificationAndSubCategory(subCategoryIds, specificationIds, discountPercentage)
+
+                } else if (subCategoryIds && categoryIds) {
+                    productService.changeDiscountIfCategoryAndSubCategory(subCategoryIds, categoryIds, discountPercentage)
+                } else if (brandIds) {
+                    productService.changeDiscountIfBrand(brandIds, discountPercentage)
+                } else if (categoryIds) {
+                    productService.changeDiscountIfCategory(categoryIds, discountPercentage)
+
+
+                } else if (specificationIds) {
+                    productService.changeDiscountIfSpecification(specificationIds, discountPercentage)
+
+                } else if (subCategoryIds) {
+                    productService.changeDiscountIfSubCategory(subCategoryIds, discountPercentage)
+                }
+                redirect(action: "list", controller: "productDetails")
+            } else {
+                redirect(action: "adminLoginForm", controller: "login")
+            }
+        }    }
+    catch (Exception e){
 
     }
-    def editBackImage(String imageNameOld){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("backImageName")
-if(file.size>0){
-        File fileOld= new File("web-app/images/allProducts/backImage/${imageNameOld}")
-        fileOld.delete();
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/backImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
-            }
-        }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/backImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
-    }
-    else{
-    return imageNameOld
-}}
-    def editSideImage(String imageNameOld){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("sideImageName")
-if(file.size>0){
-        File fileOld= new File("web-app/images/allProducts/sideImage/${imageNameOld}")
-        fileOld.delete();
-               String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/sideImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
-            }
-        }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/sideImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName}
-        else{
-    return imageNameOld
 }
-    }
-    def upLoadFrontImage(){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("frontImageName")
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/frontImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
+    def discountShortcut(){
+    try{
+        if(session.adminUser) {
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                List<ProductBrand> productBrandList = new ArrayList<>()
+                def brandList = ProductBrand.findAllByStatusShow(true)
+                for (ProductBrand productBrand : brandList) {
+                    def Product = Product.findByProductDetailsAndDelFlag(ProductDetails.findByProductBrand(productBrand), false)
+                    if (Product) {
+                        productBrandList.add(productBrand)
+                    }
+                }
+                List<ProductCategory> productCategoryArrayList = new ArrayList<>()
+                def categoryList = ProductCategory.findAllByStatusShow(true)
+                for (ProductCategory productCategory : categoryList) {
+                    def Product = Product.findByProductDetailsAndDelFlag(ProductDetails.findByProductCategory(productCategory), false)
+                    if (Product) {
+                        productCategoryArrayList.add(productCategory)
+                    }
+                }
+                List<ProductSubCategorySpecify> productSubCategorySpecifyArrayList = new ArrayList<>()
+                def specifyListSubCategory = ProductSubCategorySpecify.list()
+                for (ProductSubCategorySpecify productSubCategorySpecify : specifyListSubCategory) {
+                    def Product = Product.findByProductDetailsAndDelFlag(ProductDetails.findByProductSubCategory(ProductSubCategory.findByProductSubCategorySpecify(productSubCategorySpecify)), false)
+                    if (Product) {
+                        productSubCategorySpecifyArrayList.add(productSubCategorySpecify)
+                    }
+                }
+                List<ProductSubCategory> productSubCategoryArrayList = new ArrayList<>()
+                def subCategoryList = ProductSubCategory.findAllByStatusShow(true)
+                for (ProductSubCategory productSubCategory : subCategoryList) {
+                    def Product = Product.findByProductDetailsAndDelFlag(ProductDetails.findByProductSubCategory(productSubCategory), false)
+                    if (Product) {
+                        productSubCategoryArrayList.add(productSubCategory)
+                    }
+                }
+                render(view: "setUpDiscount", model: [productBrandList: productBrandList, productCategoryArrayList: productCategoryArrayList, productSubCategorySpecifyArrayList: productSubCategorySpecifyArrayList, productSubCategoryArrayList: productSubCategoryArrayList])
+            } else {
+                redirect(action: "adminLoginForm", controller: "login")
+
             }
-        }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/frontImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
+        }    }
+    catch (Exception e){
+        redirect(action: "notfound",controller:"errorPage")
+    }
+}
+def checkPhoto(){
+    try{
+        if(session.adminUser) {
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                def Image = request.getFile('Image')
+
+                def checkFile
+                Image trueImage = ImageIO.read(Image.getInputStream());
+
+                if (trueImage == null) {
+
+                    checkFile = "Photo bad format"
+                    render checkFile
+                } else {
+                    checkFile = "perfect"
+                    render checkFile
+                }
+            } else {
+                redirect(action: "adminLoginForm", controller: "login")
+
+            }
+        }    }
+    catch (Exception e){
 
     }
-    def uploadSideImage(){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("sideImageName")
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/sideImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
-            }
+}
+    def list(){
+        try{
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productList = Product.findAllByDelFlag(false)
+                    render(view: "list", model: [productList: productList])
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e){
+            redirect(action: "notfound",controller:"errorPage")
         }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/sideImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
     }
-    def uploadBackImage(){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("backImageName")
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/allProducts/backImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
+    def save() {
+        try{
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+        if(!params.id) {
+            def product = new Product()
+            product.productColor = ProductColor.get(params.productColor)
+            product.productDetails = ProductDetails.get(params.productDetails)
+            product.isFeatured = params.isFeatured as byte
+            product.isLatest = params.isLatest as byte
+            product.productSpecificationName = productService.convertToOriginalUrl(product.productDetails.productBrand.urlName + "-" + product.productColor.colorName + "-" + product.productDetails.briefDescription)
+            product.specialImageName = uploadSpecialImage()
+            product.delFlag = false
+            product.soldNumbers = 0
+            product.save(flush: true)
+            product.productSpecificationName = product.productSpecificationName + "-" + product.id
+            product.save(flush: true)
+
+            redirect(action: "show", id: product.id)
+            def numberOfImageSets = params.numberOfImageSets as int
+            for (int i = 0; i < numberOfImageSets; i++) {
+                def productView = new ProductView()
+                productView.thumbnailImageName = uploadThumbnailImage(i)
+                productView.mediumImageName = uploadMediumImage(i)
+                productView.zoomImageName = uploadZoomImage(i)
+                productView.product = product
+                product.delFlag = false
+                productView.save()
             }
         }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/allProducts/backImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
+        else {
+            def product = Product.findByDelFlagAndId(false,params.id)
+            if (product) {
+                product.productColor = ProductColor.get(params.productColor)
+                product.productDetails = ProductDetails.get(params.productDetails)
+                product.isFeatured = params.isFeatured as byte
+                product.isLatest = params.isLatest as byte
+                product.productSpecificationName = product.productDetails.productCategory.categoryName + "-" + product.productColor.colorName + " " + product.productDetails.productBrand.brandName + " " + product.productDetails.productName
+                product.productSpecificationName = productService.convertToOriginalUrl(product.productDetails.productBrand.urlName + "-" + product.productColor.colorName+ "-" + product.productDetails.briefDescription + "-" + product.id)
+                product.specialImageName = editSpecialImage(product.specialImageName)
+                product.save(flush: true)
+                redirect(action: "show", id: product.id)
+            } else {
+                redirect(action: "notfound", controller: "errorPage")
+            }
+        }}}}
+        catch (Exception e){
+            redirect(action: "notfound", controller: "errorPage")
+
+        }
+    }
+    def saveViewOfImages(){
+        try{
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+        if(params.id){
+                    def numberOfImageSets = params.numberOfImageSets as int
+        def product=Product.findByDelFlagAndId(false,params.id as long)
+        if(product){
+        for (int i = 0; i < numberOfImageSets; i++) {
+            def productView=new ProductView()
+            productView.thumbnailImageName=uploadThumbnailImage(i)
+            productView.mediumImageName=uploadMediumImage(i)
+            productView.zoomImageName=uploadZoomImage(i)
+            productView.product=product
+            productView.save()
+        }
+        redirect(action: "show",id: product.id)}
+        else{
+            redirect(action: "notfound",controller: "errorPage")
+
+        }}
+                    else if(params.viewId){
+            def productView=ProductView.get(params.viewId)
+            if(productView) {
+                productView.thumbnailImageName = editThumbnailImage(productView.thumbnailImageName)
+                productView.mediumImageName = editMediumImage(productView.mediumImageName)
+                productView.zoomImageName = editZoomImage(productView.zoomImageName)
+                productView.save(flush: true)
+                render "successfully edited the view"
+            }
+
+        }
+                }}}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
+        }
+    }
+    def editThumbnailImage(String imageNameOld){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("editThumbnailImage")
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                    print "yes"
+                }
+                if (file.size > 0) {
+                    File fileOld = new File(homeDir, "yarsaa/${imageNameOld}")
+                    fileOld.delete();
+                    String fileName = file.originalFilename
+                    abc:
+                    boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                    if (check == true) {
+                        Matcher m = PATTERN.matcher(fileName);
+                        if (m.matches()) {
+                            String prefix = m.group(1);
+                            String last = m.group(2);
+                            String suffix = m.group(3);
+                            if (suffix == null) suffix = "";
+                            int count = last != null ? Integer.parseInt(last) : 0;
+                            count++;
+                            fileName = prefix + "(" + count + ")" + suffix;
+                            continue abc
+                        }
+                    }
+                    File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                    file.transferTo(fileDest)
+                    return fileName
+
+                } else {
+                    return imageNameOld
+                }
+            }        }    }
+    def editMediumImage(String imageNameOld){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("editMediumImage")
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                    print "yes"
+                }
+                if (file.size > 0) {
+                    File fileOld = new File(homeDir, "yarsaa/${imageNameOld}")
+                    fileOld.delete();
+                    String fileName = file.originalFilename
+                    abc:
+                    boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                    if (check == true) {
+                        Matcher m = PATTERN.matcher(fileName);
+                        if (m.matches()) {
+                            String prefix = m.group(1);
+                            String last = m.group(2);
+                            String suffix = m.group(3);
+                            if (suffix == null) suffix = "";
+                            int count = last != null ? Integer.parseInt(last) : 0;
+                            count++;
+                            fileName = prefix + "(" + count + ")" + suffix;
+                            continue abc
+                        }
+                    }
+                    File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                    file.transferTo(fileDest)
+                    return fileName
+
+                } else {
+                    return imageNameOld
+                }
+            }        }    }
+    def editZoomImage(String imageNameOld){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("editZoomImage")
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                    print "yes"
+                }
+                if (file.size > 0) {
+                    File fileOld = new File(homeDir, "yarsaa/${imageNameOld}")
+                    fileOld.delete();
+                    String fileName = file.originalFilename
+                    abc:
+                    boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                    if (check == true) {
+                        Matcher m = PATTERN.matcher(fileName);
+                        if (m.matches()) {
+                            String prefix = m.group(1);
+                            String last = m.group(2);
+                            String suffix = m.group(3);
+                            if (suffix == null) suffix = "";
+                            int count = last != null ? Integer.parseInt(last) : 0;
+                            count++;
+                            fileName = prefix + "(" + count + ")" + suffix;
+                            continue abc
+                        }
+                    }
+                    File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                    file.transferTo(fileDest)
+                    return fileName
+
+                } else {
+                    return imageNameOld
+                }
+            }        }    }
+
+    def edit(){
+        try {
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productInstance = Product.findByDelFlagAndId(false,params.id)
+
+                    if (productInstance) {
+                        [productInstance: productInstance]
+                    } else {
+                        redirect(action: "list")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
+        }
     }
     def show(Long id){
-        def productInstance=Product.get(id)
+        try {
+            if(session.adminUser) {
 
-        if(productInstance){
-            [productInstance:productInstance]}
-        else{
-            redirect(action: "list")
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                    def productInstance = Product.findByDelFlagAndId(false,id)
+                    if (productInstance) {
+                        [productInstance: productInstance]
+                    } else {
+                        redirect(action: "list")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }            }
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
         }
     }
-    def edit(){
-        def productInstance=Product.get(params.id)
+    def uploadMediumImage(int i){
+        if(session.adminUser){
 
-        if(productInstance){
-            [productInstance:productInstance]
-        }
-        else{
-            redirect(action: "list")
-        }
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("mediumImageName"+i)
+                def fileName = file.originalFilename
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                }
+
+                abc:
+                boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                if (check == true) {
+                    Matcher m = PATTERN.matcher(fileName);
+                    if (m.matches()) {
+                        String prefix = m.group(1);
+                        String last = m.group(2);
+                        String suffix = m.group(3);
+                        if (suffix == null) suffix = "";
+                        int count = last != null ? Integer.parseInt(last) : 0;
+                        count++;
+                        fileName = prefix + "(" + count + ")" + suffix;
+                        continue abc
+                    }
+                }
+                File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                file.transferTo(fileDest)
+                return fileName
+
+            }        }    }
+    def editSpecialImage(String imageNameOld){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("specialImageName")
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                    print "yes"
+                }
+                if (file.size > 0) {
+                    File fileOld = new File(homeDir, "yarsaa/${imageNameOld}")
+                    fileOld.delete();
+                    String fileName = file.originalFilename
+                    abc:
+                    boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                    if (check == true) {
+                        Matcher m = PATTERN.matcher(fileName);
+                        if (m.matches()) {
+                            String prefix = m.group(1);
+                            String last = m.group(2);
+                            String suffix = m.group(3);
+                            if (suffix == null) suffix = "";
+                            int count = last != null ? Integer.parseInt(last) : 0;
+                            count++;
+                            fileName = prefix + "(" + count + ")" + suffix;
+                            continue abc
+                        }
+                    }
+                    File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                    file.transferTo(fileDest)
+                    return fileName
+
+                } else {
+                    return imageNameOld
+                }
+            }        }
     }
+
+
+    def uploadZoomImage(int i){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("zoomImageName"+i)
+                def fileName = file.originalFilename
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                }
+
+                abc:
+                boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                if (check == true) {
+                    Matcher m = PATTERN.matcher(fileName);
+                    if (m.matches()) {
+                        String prefix = m.group(1);
+                        String last = m.group(2);
+                        String suffix = m.group(3);
+                        if (suffix == null) suffix = "";
+                        int count = last != null ? Integer.parseInt(last) : 0;
+                        count++;
+                        fileName = prefix + "(" + count + ")" + suffix;
+                        continue abc
+                    }
+                }
+                File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                file.transferTo(fileDest)
+                return fileName
+
+            }        }    }
+
+
+
+    def uploadThumbnailImage(i) {
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("thumbnailImageName"+i)
+                def fileName = file.originalFilename
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                }
+
+                abc:
+                boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                if (check == true) {
+                    Matcher m = PATTERN.matcher(fileName);
+                    if (m.matches()) {
+                        String prefix = m.group(1);
+                        String last = m.group(2);
+                        String suffix = m.group(3);
+                        if (suffix == null) suffix = "";
+                        int count = last != null ? Integer.parseInt(last) : 0;
+                        count++;
+                        fileName = prefix + "(" + count + ")" + suffix;
+                        continue abc
+                    }
+                }
+                File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                file.transferTo(fileDest)
+                return fileName
+
+            }        }    }
+    def uploadSpecialImage(){
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def mp = (MultipartHttpServletRequest) request
+                CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("specialImageName")
+                def fileName = file.originalFilename
+                def homeDir = new File(System.getProperty("user.home"))
+                File theDir = new File(homeDir, "yarsaa");
+                if (!theDir.exists()) {
+                    theDir.mkdir();
+                }
+
+                abc:
+                boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                if (check == true) {
+                    Matcher m = PATTERN.matcher(fileName);
+                    if (m.matches()) {
+                        String prefix = m.group(1);
+                        String last = m.group(2);
+                        String suffix = m.group(3);
+                        if (suffix == null) suffix = "";
+                        int count = last != null ? Integer.parseInt(last) : 0;
+                        count++;
+                        fileName = prefix + "(" + count + ")" + suffix;
+                        continue abc
+                    }
+                }
+                File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                file.transferTo(fileDest)
+                return fileName
+
+            }        }    }
     def delete(){
-        def productInstance=Product.get(params.id)
+        try{
+            if(session.adminUser) {
 
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
 
-        if(productInstance) {
-            try{
-                File frontImage= new File("web-app/images/allProducts/frontImage/${productInstance.frontImageName}")
-                File backImage= new File("web-app/images/allProducts/backImage/${productInstance.backImageName}")
-                File sideImage= new File("web-app/images/allProducts/sideImage/${productInstance.sideImageName}")
-                frontImage.delete();
-                backImage.delete();
-                sideImage.delete();
-                productInstance.delete(flush: true)
-                flash.message="Successfully deleted."
-            }
-            catch (Exception e){
-                flash.message="Sorry! cannot delete this data. It is used as foreign key in another table."
+                    def productInstance = Product.findByDelFlagAndId(false,params.id)
+                    if (productInstance) {
+                            productInstance.delFlag = true
+                            productInstance.save(flush: true)
+                            flash.message = "Successfully deleted."
+
+                    } else {
+                        flash.message = "Unable to delete unexisted item."
+                    }
+                    redirect(action: "list")
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+                }
             }
         }
-        else{
-            flash.message="Unable to delete the already deleted item."
-
-
+        catch (Exception e){
+            redirect(action: "notfound", controller: "errorPage")
         }
-        redirect(action: "list")
-
     }
-
 }
+
+

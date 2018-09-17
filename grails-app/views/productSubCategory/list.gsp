@@ -24,31 +24,82 @@
     <tr>
         <th>SN</th>
         <th>View</th>
+        <th>Specification</th>
 
         <th>Sub-Category Name</th>
         <th>Show Status</th>
+        <th>Show in Footer</th>
+        <th>Show in Home Page</th>
 
     </tr>
     </thead>
+    <tfoot>
+    <tr>
+        <th>SN</th>
+        <th>View</th>
+        <th>Specification</th>
+
+        <th>Sub-Category Name</th>
+        <th>Show Status</th>
+        <th>Show in Footer</th>
+        <th>Show in Home Page</th>
+
+    </tr>
+    </tfoot>
     <tbody>
     <g:each in="${productSubCategoryList}" var="list" status='i'>
         <tr>
             <td> <g:link action="show" id="${list?.id}" controller="productSubCategory" class="btn btn-primary btn-sm">view</g:link></td>
 
             <td>${i+1}</td>
+            <td>${list.productSubCategorySpecify.specificationName}</td>
+
             <td>${list.subCategoryName}</td>
             <td>${list.statusShow}</td>
+            <td>${list.isFooter}</td>
+            <td>${list.showInHomePage}</td>
+
         </tr>
     </g:each>
     </tbody>
 </table>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable( {
+
+        // Setup - add a text input to each footer cell
+        $('#example tfoot th').each( function () {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        } );
+
+        // DataTable
+        var table = $('#example').DataTable( {
             "scrollY": 200,
             "scrollX": true
         } );
+
+        // Apply the search
+        table.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                            .search( this.value )
+                            .draw();
+                }
+            } );
+        } );
     } );
 </script>
+
+<style>
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+</style>
+
 </body>
 </html>

@@ -26,9 +26,20 @@
         <th>View</th>
 
         <th>Brand Name</th>
+        <th>Is Top</th>
 <th>Show Status</th>
     </tr>
     </thead>
+    <tfoot>
+    <tr>
+        <th>SN</th>
+        <th>View</th>
+        <th>Brand Name</th>
+        <th>Is Top</th>
+
+        <th>Show Status</th>
+    </tr>
+    </tfoot>
     <tbody>
     <g:each in="${productBrandList}" var="list" status='i'>
         <tr>
@@ -36,6 +47,7 @@
             <td> <g:link action="show" id="${list?.id}" controller="productBrand" class="btn btn-primary btn-sm">view</g:link></td>
 
             <td>${list.brandName}</td>
+            <td>${list.isTop}</td>
 <td>${list.statusShow}</td>
         </tr>
     </g:each>
@@ -43,11 +55,41 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable( {
+
+        // Setup - add a text input to each footer cell
+        $('#example tfoot th').each( function () {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        } );
+
+        // DataTable
+        var table = $('#example').DataTable( {
             "scrollY": 200,
             "scrollX": true
         } );
+
+        // Apply the search
+        table.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                            .search( this.value )
+                            .draw();
+                }
+            } );
+        } );
     } );
 </script>
+
+<style>
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+</style>
+
 </body>
 </html>

@@ -10,15 +10,22 @@
 <head>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/jquery-ui.css')}" type="text/css"
           media="all"/>
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/bootstrap.min.css')}" type="text/css"
-          media="all"/>
-
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="${resource(dir: 'js', file: 'yamsaa/jquery.min.js')}" type="text/javascript"
             charset="utf-8"></script>
+    <script src="${resource(dir: 'js', file: 'yarsaa/jquery-1.11.0.min.js')}" type="text/javascript"
+            charset="utf-8"></script>
+
+    <script src="${resource(dir: 'js', file: 'yamsaa/bootstrapvalidator.js')}" type="text/javascript"
+            charset="utf-8"></script>
+
     <script src="${resource(dir: 'js', file: 'yamsaa/jquery-ui.js')}" type="text/javascript"
             charset="utf-8"></script>
-    <script src="${resource(dir: 'js', file: 'yamsaa/bootstrap.min.js')}" type="text/javascript"
+    <script src="${resource(dir: 'js', file: 'yamsaa/bootv3.5.min.js')}" type="text/javascript"
             charset="utf-8"></script>
+    <script src="${resource(dir: 'js', file: 'yamsaa/bootstrap-multiselect.js')}" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/bootstrap-multiselect.css')}" type="text/css">
+
     <script src="${resource(dir: 'js', file: 'yamsaa/bootbox.min.js')}" type="text/javascript"
             charset="utf-8"></script>
 
@@ -26,13 +33,17 @@
             charset="utf-8"></script>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/jquery.dataTables.min.css')}" type="text/css"
           media="all"/>
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/bootstrap-datepicker.min.css')}" type="text/css">
-    <script src="${resource(dir: 'js', file: 'yamsaa/bootstrap-datepicker.min.js')}" type="text/javascript"
-            charset="utf-8"></script>
+
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'yamsaa/bootstrap-select.min.css')}" type="text/css">
     <script src="${resource(dir: 'js', file: 'yamsaa/bootstrap-select.min.js')}" type="text/javascript"
             charset="utf-8"></script>
-    <title>Yamsaa</title>
+    <link rel="shortcut icon" href="${resource(dir: 'js', file: 'yarsaa/yarsaalogosmall.png')}">
+    <script type="text/javascript"> //<![CDATA[
+    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+    document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+    //]]>
+    </script>
+    <title>Yarsaa</title>
     <style>
     li a:focus, .active {
         background-color: rgba(15, 13, 16, 0.99);
@@ -41,9 +52,22 @@
 
 </head>
 <body>
+<div class="se-pre-con"></div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<script>
+    //paste this code under the head tag or in a separate js file.
+    // Wait for window load
+    $(window).load(function() {
+// Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+</script>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'yarsaa/loader.css')}" type="text/css"
+      media="all"/>
 <noscript>
 
-    <div class="modal-dialog">
+    <div class="modal-dialog ">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -71,33 +95,63 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">Yamsaa</a>
+            <a class="navbar-brand">Yarsaa</a>
         </div>
         <ul class="nav navbar-nav">
             <li><g:link action="adminHome" controller="adminHome">Home</g:link></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Set Up<span class="caret"></span></a>
+            <g:if test="${session.adminUser.role=="CEO" || session.adminUser.role=="MD"}">
+            <li><g:link action="list" controller="adminUserInformation">Staffs</g:link></li>
+            </g:if>
+<g:if test="${session.adminUser.role=="CEO" || session.adminUser.role=="MD" || session.adminUser.role=="Content Manager"}">
+
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button">Set Up<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><g:link action="list" controller="productCategory">Product Category</g:link></li>
+                    <li><g:link action="list" controller="productSubCategorySpecify">Specify Product SubCategory</g:link></li>
                     <li><g:link action="list" controller="productSubCategory">Product SubCategory</g:link></li>
                     <li><g:link action="list" controller="productColor">Product Color</g:link></li>
                     <li><g:link action="list" controller="productSize">Product Size</g:link></li>
                     <li><g:link action="list" controller="productBrand">Product Brand</g:link></li>
-                    <li><g:link action="list" controller="seasons">Season</g:link></li>
-
+                    <li><g:link action="list" controller="paymentMethod">Payment</g:link></li>
+                    <li><g:link action="list" controller="deliveryMethod">Delivery</g:link></li>
                 </ul>
             </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Items<span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button">Items<span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><g:link action="list" controller="productDetails">Product Details</g:link></li>
                     <li><g:link action="list" controller="product">Product</g:link></li>
                     <li><g:link action="list" controller="coverImage">Cover Image</g:link></li>
-                    <li><g:link action="show" controller="specialBrand" id="${SpecialBrand.list()[0].id}">Special Brand</g:link></li>
-                    <li><g:link action="list" controller="backgroundImage" >Other Images</g:link></li>
+                    <li><g:link action="list" controller="aids">Advertisement</g:link></li>
+                    <li><g:link action="show" controller="backgroundImage" >Home Background Image</g:link></li>
+                    <li><g:link action="discountShortcut" controller="product" >Discount Shortcut</g:link></li>
+                    <li><g:link action="latestShortcut" controller="product" >Change Latest Product?</g:link></li>
 
                 </ul>
             </li>
-            <li><g:link action="show" controller="companyInformation" id="${CompanyInformation.list()[0].id}">Company Information</g:link></li>
-            <li><g:link action="show" controller="seasonsManagement" id="${SeasonManagement.list()[0].id}">Manage Season</g:link></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button">Manage<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><g:link action="show" controller="mailSetUp">SetUp Email</g:link></li>
+                    <li><g:link action="show" controller="homeContent">Home Content</g:link></li>
+                    <li><g:link action="show" controller="aboutUs">About Us</g:link></li>
+                    <li><g:link action="show" controller="companyInformation">Company Information</g:link></li>
+                    <li><g:link action="show" controller="otherCosts">Other Costs</g:link></li>
+                    <li><g:link action="show" controller="style">Style</g:link></li>
 
+                </ul>
+            </li>
+    </g:if>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button">Orders<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><g:link action="recentOrders" controller="cartHistory">Recent Orders</g:link></li>
+                    <li><g:link action="successFullOrders" controller="cartHistory">Successful Orders</g:link></li>
+                    <li><g:link action="pendingOrders" controller="cartHistory">Pending Orders</g:link></li>
+
+
+                </ul>
+            </li>
+
+
+            <li><g:link action="logout" controller="logout">Logout</g:link></li>
 
 
         </ul>
@@ -122,5 +176,6 @@
     <g:layoutBody/>
 </div>
 </div>
+
 </body>
 </html>

@@ -1,6 +1,8 @@
 
 
-class AdminHomeController {
+class AdminHomeController extends BaseController{
 
-    def adminHome() { }
+    def adminHome() {
+
+    }
 }

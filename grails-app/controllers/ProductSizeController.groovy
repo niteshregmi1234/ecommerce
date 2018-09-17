@@ -1,72 +1,155 @@
+import org.springframework.dao.DataIntegrityViolationException
 
-
-class ProductSizeController {
+class ProductSizeController extends BaseController{
+    static allowedMethods = [save: 'POST']
 
     def list() {
-        def productSizeList=ProductSize.list()
-        render(view: "list",model: [productSizeList:productSizeList])
-    }
-    def create(){
 
-    }
-    def save(){
-        if(!params.id){
-            def productSizeInstance=new ProductSize()
-            productSizeInstance.sizeName=params.sizeName
-            productSizeInstance.statusShow=params.statusShow as boolean
-            productSizeInstance.save(flush: true)
-            redirect(action: "show" ,id:productSizeInstance.id)
-        }
-        else{
-            def productSizeInstance=ProductSize.get(params.id)
+        try {
+            if(session.adminUser) {
 
-            productSizeInstance.sizeName=params.sizeName
-            productSizeInstance.statusShow=params.statusShow as boolean
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
 
-            productSizeInstance.save(flush: true)
-            redirect(action: "show" ,id:productSizeInstance.id)
+                    def productSizeList = ProductSize.list()
+                    render(view: "list", model: [productSizeList: productSizeList])
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e) {
+            redirect(action: "notfound", controller: "errorPage")
         }
     }
-    def show(Long id){
-        def productSizeInstance=ProductSize.get(id)
+
+    def create() {
+        if(session.adminUser){
+
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role=="Content Manager") {
+        render(view: "create")
+        }
+        else {
+                redirect(action: "adminLoginForm", controller: "login")
+
+            }        }
+    }
+
+    def save() {
+        try {
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    if (!params.id) {
+                        def productSizeInstance = new ProductSize()
+                        productSizeInstance.sizeName = params.sizeName
+                        productSizeInstance.statusShow = params.statusShow as byte
+                        productSizeInstance.sizeDetails = params.sizeDetails
+                        productSizeInstance.save(flush: true)
+                        redirect(action: "show", id: productSizeInstance.id)
+                    } else {
+                        def productSizeInstance = ProductSize.get(params.id)
+                        if (productSizeInstance) {
+                            productSizeInstance.sizeName = params.sizeName
+                            productSizeInstance.statusShow = params.statusShow as byte
+                            productSizeInstance.sizeDetails = params.sizeDetails
+                            productSizeInstance.save(flush: true)
+                            redirect(action: "show", id: productSizeInstance.id)
+                        } else {
+                            redirect(action: "notfound", controller: "errorPage")
+
+                        }
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e) {
+            redirect(action: "notfound", controller: "errorPage")
+        }
+    }
+
+    def show(Long id) {
+        try {
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productSizeInstance = ProductSize.get(id)
+                    if (productSizeInstance) {
+                        [productSizeInstance: productSizeInstance]
+                    } else {
+                        redirect(action: "list")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e) {
+            redirect(action: "notfound", controller: "errorPage")
+
+        }
+    }
+
+    def edit() {
+        try {
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productSizeInstance = ProductSize.get(params.id)
+
+                    if (productSizeInstance) {
+                        [productSizeInstance: productSizeInstance]
+                    } else {
+                        redirect(action: "list")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e) {
+            redirect(action: "notfound", controller: "errorPage")
+
+        }
+    }
+
+    def delete() {
+        try {
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role=="Content Manager") {
+
+                def productSizeInstance = ProductSize.get(params.id)
 
 
-        if(productSizeInstance){
-            [productSizeInstance:productSizeInstance]}
+                if (productSizeInstance) {
+
+                    productSizeInstance.delete(flush: true)
+                    flash.message = "Successfully deleted."
+
+
+                } else {
+                    flash.message = "Unable to delete the already deleted item."
+
+
+                }
+                redirect(action: "list")
+            }
         else{
+                redirect(action: "adminLoginForm",controller: "login")
+            }
+        }}
+        catch (DataIntegrityViolationException e) {
+            flash.message = "Sorry! cannot delete this data."
             redirect(action: "list")
         }
-    }
-    def edit(){
-        def productSizeInstance=ProductSize.get(params.id)
-
-        if(productSizeInstance){
-            [productSizeInstance:productSizeInstance]
-        }
-        else{
-            redirect(action: "list")
-        }
-    }
-    def delete(){
-        def productSizeInstance=ProductSize.get(params.id)
-
-
-        if(productSizeInstance) {
-            try{
-                productSizeInstance.delete(flush: true)
-                flash.message="Successfully deleted."
-            }
-            catch (Exception e){
-                flash.message="Sorry! cannot delete this data. It is used as foreign key in another table."
-            }
-        }
-        else{
-            flash.message="Unable to delete the already deleted item."
-
+        catch (Exception e) {
+            redirect(action: "notfound", controller: "errorPage")
 
         }
-        redirect(action: "list")
-
     }
 
 }

@@ -43,6 +43,32 @@ grails.controllers.defaultScope = 'prototype'
 
 // GSP settings
 grails {
+    try{
+    mail {
+
+        host = "smtp.gmail.com"
+
+        port = 465
+
+        username = "yarsaacustomermail@gmail.com"
+
+        password = "hem1234...."
+
+        props = ["mail.smtp.auth":"true",
+
+                 "mail.smtp.starttls.required":"false",
+
+                 "mail.smtp.socketFactory.port":"465",
+
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+
+                 "mail.smtp.socketFactory.fallback":"false"]
+
+    }}
+    catch (Exception e){
+
+    }
+
     views {
         gsp {
             encoding = 'UTF-8'

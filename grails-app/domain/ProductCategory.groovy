@@ -1,8 +1,20 @@
-
-
 class ProductCategory {
-String categoryName
+    String categoryId = UUID.randomUUID().toString()
+    String categoryDescription
+    String categoryName
+    String coverImageName
     boolean statusShow
+    String menuImage1
+    String menuImage2
+    String urlName
     static constraints = {
+        categoryId (generator:'assigned',unique:true)
+        urlName (nullable: true)
+
     }
+    static mapping = {
+
+    }
+
 }
+

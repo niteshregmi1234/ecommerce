@@ -1,3 +1,4 @@
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 import javax.imageio.ImageIO
@@ -5,10 +6,15 @@ import java.awt.Image
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class CoverImageController {
+class CoverImageController extends BaseController{
+    static allowedMethods = [checkPhoto: 'POST',editCoverImage: 'POST',uploadCoverImage: 'POST',save: 'POST']
     final static Pattern PATTERN = Pattern.compile("(.*?)(?:\\((\\d+)\\))?(\\.[^.]*)?");
 def checkPhoto(){
-    def Image = request.getFile('Image')
+    try{
+        if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+            def Image = request.getFile('Image')
 
     def checkFile
     Image trueImage = ImageIO.read(Image.getInputStream());
@@ -22,130 +28,224 @@ def checkPhoto(){
     else{
         checkFile="perfect"
         render checkFile
+    }}
+        else{
+            redirect(action: "adminLoginForm",controller: "login")
+
+        }
+    }}
+    catch (Exception  e){
+
     }
 }
     def list() {
-        def coverImageList=CoverImage.list()
-        render(view: "list",model: [coverImageList:coverImageList])
+        try {
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                    def coverImageList=CoverImage.list()
+        render(view: "list",model: [coverImageList:coverImageList])}
+        else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+        }
     }
     def create(){
+        if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+        render(view: "create")
+        }}
+        else{
+            redirect(action: "adminLoginForm",controller: "login")
 
+        }
     }
     def save(){
-        if(!params.id){
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                if(!params.id){
             def coverImageInstance=new CoverImage()
             coverImageInstance.imageName=uploadCoverImage()
-            coverImageInstance.statusShow=params.statusShow as boolean
+            coverImageInstance.productBrand=ProductBrand.findById(params.productBrand)
+            coverImageInstance.statusShow=params.statusShow as byte
             coverImageInstance.slidePlace=params.slidePlace
             coverImageInstance.save(flush: true)
             redirect(action: "show" ,id:coverImageInstance.id)
         }
         else{
             def coverImageInstance=CoverImage.get(params.id)
+            if(coverImageInstance){
             coverImageInstance.imageName=editCoverImage(coverImageInstance.imageName)
-            coverImageInstance.statusShow=params.statusShow as boolean
+                coverImageInstance.productBrand=ProductBrand.findById(params.productBrand)
+                coverImageInstance.statusShow=params.statusShow as byte
             coverImageInstance.slidePlace=params.slidePlace
             coverImageInstance.save(flush: true)
-            redirect(action: "show" ,id:coverImageInstance.id)
+            redirect(action: "show" ,id:coverImageInstance.id)}
+            else{
+                redirect(action: "notfound",controller: "errorPage")
+
+            }
+        }}
+            else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
         }
     }
     def uploadCoverImage(){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("imageName")
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/coverImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
+        if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+            def mp = (MultipartHttpServletRequest) request
+            CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("imageName")
+            def fileName = file.originalFilename
+            def homeDir = new File(System.getProperty("user.home"))
+            File theDir = new File(homeDir, "yarsaa");
+            if (!theDir.exists()) {
+                theDir.mkdir();
             }
-        }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/coverImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
-    }
+
+            abc:
+            boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+            if (check == true) {
+                Matcher m = PATTERN.matcher(fileName);
+                if (m.matches()) {
+                    String prefix = m.group(1);
+                    String last = m.group(2);
+                    String suffix = m.group(3);
+                    if (suffix == null) suffix = "";
+                    int count = last != null ? Integer.parseInt(last) : 0;
+                    count++;
+                    fileName = prefix + "(" + count + ")" + suffix;
+                    continue abc
+                }
+            }
+            File fileDest = new File(homeDir, "yarsaa/${fileName}")
+            file.transferTo(fileDest)
+            return fileName
+
+        }   } }
     def editCoverImage(String imageNameOld){
-        def mp = (MultipartHttpServletRequest) request
-        CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("imageName")
-        if(file.size>0){
-        File fileOld= new File("web-app/images/coverImage/${imageNameOld}")
-        fileOld.delete();
-        String fileName = file.originalFilename
-        abc:
-        boolean check = new File("web-app/images/coverImage", fileName).exists()
-        if (check == true) {
-            Matcher m = PATTERN.matcher(fileName);
-            if (m.matches()) {
-                String prefix = m.group(1);
-                String last = m.group(2);
-                String suffix = m.group(3);
-                if (suffix == null) suffix = "";
-                int count = last != null ? Integer.parseInt(last) : 0;
-                count++;
-                fileName = prefix + "(" + count + ")" + suffix;
-                continue abc
+        if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                def mp = (MultipartHttpServletRequest) request
+            CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("imageName")
+            def homeDir = new File(System.getProperty("user.home"))
+            File theDir = new File(homeDir, "yarsaa");
+            if (!theDir.exists()) {
+                theDir.mkdir();
+                print "yes"
             }
-        }
-        def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/coverImage/${fileName}")
-        file.transferTo(new File(realFilePath))
-        def imageName = fileName
-        return imageName
-        }
-        else{
-            return imageNameOld
-        }
-    }
+            if (file.size > 0) {
+                File fileOld = new File(homeDir, "yarsaa/${imageNameOld}")
+                fileOld.delete();
+                String fileName = file.originalFilename
+                abc:
+                boolean check = new File(homeDir, "yarsaa/" + fileName).exists()
+                if (check == true) {
+                    Matcher m = PATTERN.matcher(fileName);
+                    if (m.matches()) {
+                        String prefix = m.group(1);
+                        String last = m.group(2);
+                        String suffix = m.group(3);
+                        if (suffix == null) suffix = "";
+                        int count = last != null ? Integer.parseInt(last) : 0;
+                        count++;
+                        fileName = prefix + "(" + count + ")" + suffix;
+                        continue abc
+                    }
+                }
+                File fileDest = new File(homeDir, "yarsaa/${fileName}")
+                file.transferTo(fileDest)
+                return fileName
+
+            } else {
+                return imageNameOld
+            }
+        }    }}
     def show(Long id){
-        def coverImageInstance=CoverImage.get(id)
-
-
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                    def coverImageInstance=CoverImage.get(id)
         if(coverImageInstance){
             [coverImageInstance:coverImageInstance]}
         else{
             redirect(action: "list")
+        }}
+            else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+            }}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
         }
     }
     def edit(){
-        def coverImageInstance=CoverImage.get(params.id)
-
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                    def coverImageInstance=CoverImage.get(params.id)
         if(coverImageInstance){
             [coverImageInstance:coverImageInstance]
         }
         else{
             redirect(action: "list")
+        }}
+            else {
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
         }
     }
     def delete(){
-        def coverImageInstance=CoverImage.get(params.id)
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
 
-
+                def coverImageInstance=CoverImage.get(params.id)
         if(coverImageInstance) {
-            try{
-                def imageName=coverImageInstance.imageName
-                File file= new File("web-app/images/coverImage/${imageName}")
+            coverImageInstance.delete(flush: true)
+
+            def imageName=coverImageInstance.imageName
+            def homeDir = new File(System.getProperty("user.home"))
+                File file= new File(homeDir,"yarsaa/${imageName}")
                 file.delete();
-                coverImageInstance.delete(flush: true)
                 flash.message="Successfully deleted."
-            }
-            catch (Exception e){
-                flash.message="Sorry! cannot delete this data. It is used as foreign key in another table."
-            }
         }
         else{
             flash.message="Unable to delete the already deleted item."
 
 
         }
-        redirect(action: "list")
+        redirect(action: "list")}
+            else{
+redirect(action: "adminLoginForm",controller: "login")
+            }
+        }}
+        catch (DataIntegrityViolationException e){
+            flash.message="Sorry! cannot delete this data."
+            redirect(action: "list")
+        }
+        catch ( Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+
+        }
+
 
     }
 

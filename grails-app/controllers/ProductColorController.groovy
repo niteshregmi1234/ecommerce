@@ -1,72 +1,143 @@
+import org.springframework.dao.DataIntegrityViolationException
 
-
-class ProductColorController {
-
+class ProductColorController extends BaseController{
+static allowedMethods = [save: 'POST']
     def list() {
-        def productColorList=ProductColor.list()
-        render(view: "list",model: [productColorList:productColorList])
+        try{
+            if(session.adminUser) {
+
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+                    def productColorList = ProductColor.list()
+                    render(view: "list", model: [productColorList: productColorList])
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }        }
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
+        }
     }
     def create(){
+        if(session.adminUser){
 
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role=="Content Manager") {
+        render(view:"create")
+        }
+        else {
+                redirect(action: "adminLoginForm", controller: "login")
+
+            }        }
     }
     def save(){
-        if(!params.id){
-            def productColorInstance=new ProductColor()
-            productColorInstance.colorName=params.colorName
-            productColorInstance.statusShow=params.statusShow as boolean
-            productColorInstance.save(flush: true)
-            redirect(action: "show" ,id:productColorInstance.id)
-        }
-        else{
-            def productColorInstance=ProductColor.get(params.id)
+        try{
+            if(session.adminUser) {
 
-            productColorInstance.colorName=params.colorName
-            productColorInstance.statusShow=params.statusShow as boolean
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
 
-            productColorInstance.save(flush: true)
+                    if (!params.id) {
+                        def productColorInstance = new ProductColor()
+                        productColorInstance.colorName = params.colorName
+                        productColorInstance.statusShow = params.statusShow as byte
+                        productColorInstance.save(flush: true)
+                        redirect(action: "show", id: productColorInstance.id)
+                    } else {
+                        def productColorInstance = ProductColor.get(params.id)
+                        if (productColorInstance) {
+                            productColorInstance.colorName = params.colorName
+                            productColorInstance.statusShow = params.statusShow as byte
 
-            redirect(action: "show" ,id:productColorInstance.id)
+                            productColorInstance.save(flush: true)
+
+                            redirect(action: "show", id: productColorInstance.id)
+                        } else {
+                            redirect(action: "notfound", controller: "errorPage")
+
+                        }
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }            }
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
         }
     }
     def show(Long id){
-        def productColorInstance=ProductColor.get(id)
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role=="Content Manager") {
+
+                def productColorInstance=ProductColor.get(id)
 
         if(productColorInstance){
             [productColorInstance:productColorInstance]}
         else{
             redirect(action: "list")
+        }}
+            else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+            redirect(action: "notfound",controller: "errorPage")
         }
     }
     def edit(){
-        def productColorInstance=ProductColor.get(params.id)
+        try{
+            if(session.adminUser) {
 
-        if(productColorInstance){
-            [productColorInstance:productColorInstance]
-        }
-        else{
-            redirect(action: "list")
-        }
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                    def productColorInstance = ProductColor.get(params.id)
+
+                    if (productColorInstance) {
+                        [productColorInstance: productColorInstance]
+                    } else {
+                        redirect(action: "list")
+                    }
+                } else {
+                    redirect(action: "adminLoginForm", controller: "login")
+
+                }
+            }            }
+    catch (Exception e){
+        redirect(action: "notfound",controller: "errorPage")
     }
-    def delete(){
-        def productColorInstance=ProductColor.get(params.id)
+    }
+    def delete() {
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role=="Content Manager") {
+
+                def productColorInstance = ProductColor.get(params.id)
 
 
-        if(productColorInstance) {
-            try{
-                productColorInstance.delete(flush: true)
-                flash.message="Successfully deleted."
-            }
-            catch (Exception e){
-                flash.message="Sorry! cannot delete this data. It is used as foreign key in another table."
-            }
-        }
-        else{
-            flash.message="Unable to delete the already deleted item."
+        if (productColorInstance) {
+
+            productColorInstance.delete(flush: true)
+            flash.message = "Successfully deleted."
+        } else {
+            flash.message = "Unable to delete the already deleted item."
 
 
         }
         redirect(action: "list")
+    }
+            else{
+             redirect(action: "adminLoginForm",controller: "login")
+            }
+        }}
+    catch (DataIntegrityViolationException e) {
+        flash.message = "Sorry! cannot delete this data."
+        redirect(action: "list")
+    }
+    catch (Exception e) {
+        redirect(action: "notfound", controller: "errorPage")
 
+    }
     }
 
 }

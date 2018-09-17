@@ -32,7 +32,8 @@
         <div class="form-group">
             <label class="control-label col-sm-2">BackGround Image:</label>
             <div class="col-sm-3">
-                <img src="${resource(dir: "images/otherStuffs",file: "${backgroundImageInstance.imageName}")}" height="100" style="margin-left: -1%">
+                <img src="${createLink(controller: 'imageRender', action:'renderImage',params: [imageName:backgroundImageInstance.imageName])}" height="100" style="margin-left: -1%">
+
 
             </div>
         </div>
@@ -44,7 +45,7 @@
 
 
 <div class="col-lg-12" style="margin-left: 12%">
-    <g:link action="edit" id="${backgroundImageInstance?.id}" controller="backgroundImage" class="btn btn-primary navbar-btn">Edit</g:link>
+    <g:link action="edit" controller="backgroundImage" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-primary navbar-btn">Edit</g:link>
 
 </div>
 </body>

@@ -12,6 +12,17 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Choose Offered Brand:</label>
+            <div class="col-sm-4">
+                <g:select class="selectpicker" id="productBrand" name="productBrand" value="${coverImageInstance?.productBrand?.id}"
+                          from="${ProductBrand.findAllByStatusShow(true)}" optionKey="id" optionValue="brandName" data-show-subtext="true"
+                          data-live-search="true" title="choose brand "/>
+
+            </div>
+        </div>
+    </div>
 
     <div class="col-lg-12">
         <div class="form-group ">
@@ -19,7 +30,7 @@
 
             <div class="col-sm-4">
                 <g:select name="statusShow" from="${['TRUE','FALSE']}"
-                          keys="${[true,false]}" value="${coverImageInstance?.statusShow}" class="form-control"/>
+                          keys="${[1,0]}" value="${coverImageInstance?.statusShow?1:0}" class="form-control"/>
                 %{--<g:formatDate format="yyyy-MM-dd" class="form-control"/>--}%
                 %{--<input type="email" class="form-control" id="email" placeholder="Enter email">--}%
             </div>
@@ -42,13 +53,11 @@
         function preventMultipleSubmissions() {
             $('#submit_Id').prop('disabled', true);
         }
-
         window.onbeforeunload = preventMultipleSubmissions;
-
-
         function Validate(oForm) {
             var responseValue;
             var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];
+            var productBrand = document.getElementById("productBrand").value;
 
             var imageName = document.getElementById("imageName").value;
             if(imageName.length==0){
@@ -60,7 +69,17 @@
                 return false;
 
             }
-            else {
+            else if(productBrand==''){
+                bootbox.alert({
+                    message: "brand must be selected",
+                    size: 'small'
+                });
+                document.getElementById("productBrand").focus();
+                return false;
+            }
+
+
+            if(imageName.length>0) {
                 var arrInputs = oForm.getElementsByTagName("input");
                 for (var i = 0; i < arrInputs.length; i++) {
                     var oInput = arrInputs[i];

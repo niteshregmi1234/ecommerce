@@ -6,11 +6,15 @@ import java.awt.Image
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class BackgroundImageController {
-
+class BackgroundImageController extends BaseController{
+static allowedMethods = [checkPhoto: 'POST',save: 'POST',editBackgroundImage: 'POST']
     final static Pattern PATTERN = Pattern.compile("(.*?)(?:\\((\\d+)\\))?(\\.[^.]*)?");
     def checkPhoto(){
-        def Image = request.getFile('Image')
+        try{
+            if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def Image = request.getFile('Image')
 
         def checkFile
         Image trueImage = ImageIO.read(Image.getInputStream());
@@ -24,29 +28,60 @@ class BackgroundImageController {
         else{
             checkFile="perfect"
             render checkFile
+        }}
+        else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+
         }
     }
 
-def list(){
-    def backgroundImageList= BackgroundImage.list()
-    [backgroundImageList:backgroundImageList]
-}
     def save() {
-        def backgroundImageInstance=BackgroundImage.get(params.id)
+        try{
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                def backgroundImageInstance=BackgroundImage.get(params.id)
+        if(backgroundImageInstance){
         backgroundImageInstance.imageName=editBackgroundImage(backgroundImageInstance.imageName)
         backgroundImageInstance.save(flush: true)
-        redirect(action: "show",id:backgroundImageInstance.id)
+        redirect(action: "show")}
+        else{
+            redirect(action: "notfound", controller: "errorPage")
+
+        }}
+            else{
+                redirect(action: "adminLoginForm",controller: "login")
+
+            }
+        }}
+        catch (Exception e){
+            redirect(action: "notfound", controller: "errorPage")
+
+        }
 
     }
     def editBackgroundImage(String imageNameOld){
-        def mp = (MultipartHttpServletRequest) request
+        if(session.adminUser){
+            if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+            def mp = (MultipartHttpServletRequest) request
         CommonsMultipartFile file = (CommonsMultipartFile) mp.getFile("imageName")
+        def homeDir = new File(System.getProperty("user.home"))
+        File theDir = new File(homeDir,"yarsaa");
+        if (! theDir.exists()){
+            theDir.mkdir();
+            print"yes"
+        }
         if(file.size>0){
-            File fileOld= new File("web-app/images/otherStuffs/${imageNameOld}")
+            File fileOld= new File(homeDir,"yarsaa/${imageNameOld}")
             fileOld.delete();
             String fileName = file.originalFilename
             abc:
-            boolean check = new File("web-app/images/otherStuffs", fileName).exists()
+            boolean check = new File(homeDir, "yarsaa/"+fileName).exists()
             if (check == true) {
                 Matcher m = PATTERN.matcher(fileName);
                 if (m.matches()) {
@@ -60,22 +95,58 @@ def list(){
                     continue abc
                 }
             }
-            def realFilePath = grailsApplication.mainContext.servletContext.getRealPath("/images/otherStuffs/${fileName}")
-            file.transferTo(new File(realFilePath))
-            def imageName = fileName
-            return imageName
+            File fileDest = new File(homeDir,"yarsaa/${fileName}")
+            file.transferTo(fileDest)
+            return fileName
+
         }
-        else{
+        else {
             return imageNameOld
-        }
-    }
-       def show(Long id){
-        def backgroundImageInstance=BackgroundImage.get(id)
-        [backgroundImageInstance:backgroundImageInstance]}
+        }   }     }    }
+       def show(){
+           try{
+               if(session.adminUser) {
+
+                   if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
+
+                       def backgroundImageInstance = BackgroundImage.list()[0]
+                       if (backgroundImageInstance) {
+                           [backgroundImageInstance: backgroundImageInstance]
+                       } else {
+                           redirect(action: "notfound", controller: "errorPage")
+
+                       }
+                   } else {
+                       redirect(action: "adminLoginForm", controller: "login")
+                   }
+               }           }
+           catch (Exception e){
+               redirect(action: "notfound", controller: "errorPage")
+
+           }
+           }
 
     def edit(){
-        def backgroundImageInstance=BackgroundImage.get(params.id)
+        try {
+            if(session.adminUser){
+                if (session.adminUser.role == "CEO" || session.adminUser.role == "MD" || session.adminUser.role == "Content Manager") {
 
-        [backgroundImageInstance:backgroundImageInstance]
+        def backgroundImageInstance=BackgroundImage.list()[0]
+        if(backgroundImageInstance){
+        [backgroundImageInstance:backgroundImageInstance]}
+        else{
+            redirect(action: "notfound", controller: "errorPage")
+
+        }}
+            else{
+             redirect(action: "adminLoginForm",controller: "login")
+            }}
+        }
+        catch (Exception e){
+            redirect(action: "notfound", controller: "errorPage")
+
+        }
+
     }
 }
+

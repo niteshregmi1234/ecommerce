@@ -1,22 +1,18 @@
 
 class Product {
-ProductCategory productCategory
-    ProductSubCategory productSubCategory
+    ProductDetails productDetails
     ProductColor productColor
-    ProductSize productSize
-    String frontImageName
-    String sideImageName
-    String backImageName
-    String name
-    ProductBrand productBrand
-    boolean isSale
-    float discountPercentage
     boolean isLatest
     boolean isFeatured
-    float price
-    String description
-    boolean isMenuBar
+    String productSpecificationName
+    String specialImageName
+    boolean delFlag
+    int soldNumbers
     static constraints = {
-
+        delFlag nullable: true
     }
+    static mapping = {
+        sort id: "desc"
+    }
+
 }

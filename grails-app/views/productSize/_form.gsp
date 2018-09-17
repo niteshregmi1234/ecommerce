@@ -1,5 +1,4 @@
-
-    <div class="col-lg-12">
+ <div class="col-lg-12">
         <div class="form-group ">
             <label class="control-label col-sm-2" for="sizeName">Size Name:</label>
 
@@ -17,11 +16,22 @@
 
             <div class="col-sm-4">
                 <g:select name="statusShow" from="${['TRUE','FALSE']}"
-                          keys="${[true,false]}" value="${productSizeInstance?.statusShow}" class="form-control"/>
+                          keys="${[1,0]}" value="${productSizeInstance?.statusShow?1:0}" class="form-control"/>
 
             </div>
         </div>
     </div>
+ <div class="col-lg-12">
+     <div class="form-group ">
+         <label class="control-label col-sm-2" for="statusShow">Size Details:</label>
+
+         <div class="col-sm-4">
+             <g:textArea name="sizeDetails" id="sizeDetails" class="form-control" value="${productSizeInstance?.sizeDetails}"/>
+
+
+         </div>
+     </div>
+ </div>
 
     <script>
         function preventMultipleSubmissions() {

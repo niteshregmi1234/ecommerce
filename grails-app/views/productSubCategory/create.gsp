@@ -12,7 +12,7 @@
     <title></title>
 </head>
 
-<body><g:form action="save" controller="productSubCategory" class="form-horizontal" onsubmit="return Validate();">
+<body><g:form action="save" method="POST" controller="productSubCategory" class="form-horizontal" enctype="multipart/form-data" onsubmit="return Validate(this);">
 
     <g:render template="form"></g:render>
 <div class="col-lg-12">
@@ -20,7 +20,7 @@
         <label class="control-label col-sm-2"></label>
 
         <div class="col-sm-6">
-            <g:submitButton name="save" value="Save" id="submit_Id" class="btn btn-default"></g:submitButton>
+            <g:submitButton name="save" value="Save" id="submit_Id" onclick="return confirm('Are you sure want to confirm?')" class="btn btn-default"></g:submitButton>
         </div>
     </div>
 </div>
